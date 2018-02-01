@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/mimiduo-common/mimiduo-common.iml" filepath="$PROJECT_DIR$/mimiduo-common/mimiduo-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mimiduo-manager/mimiduo-manager-dao/mimiduo-manager-dao.iml" filepath="$PROJECT_DIR$/mimiduo-manager/mimiduo-manager-dao/mimiduo-manager-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mimiduo-manager/mimiduo-manager-pojo/mimiduo-manager-pojo.iml" filepath="$PROJECT_DIR$/mimiduo-manager/mimiduo-manager-pojo/mimiduo-manager-pojo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mimiduo-manager/mimiduo-manager-service/mimiduo-manager-service.iml" filepath="$PROJECT_DIR$/mimiduo-manager/mimiduo-manager-service/mimiduo-manager-service.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mimiduo-manager/mimiduo-manager-web/mimiduo-manager-web.iml" filepath="$PROJECT_DIR$/mimiduo-manager/mimiduo-manager-web/mimiduo-manager-web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mimiduo-parent.iml" filepath="$PROJECT_DIR$/mimiduo-parent.iml" />
+    </modules>
+  </component>
+</project>

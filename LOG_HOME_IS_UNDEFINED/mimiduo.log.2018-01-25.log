@@ -1,0 +1,170 @@
+2018-01-25 22:04:16.459 [main] INFO  ManageApplication -
+				Starting ManageApplication on DESKTOP-5U3F3G2 with PID 5748 (D:\work\intellij\mimiduo-parent\mimiduo-manager\mimiduo-manager-web\target\classes started by Administrator in D:\work\intellij\mimiduo-parent)
+2018-01-25 22:04:16.489 [main] INFO  ManageApplication -
+				The following profiles are active: dev
+2018-01-25 22:04:16.809 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1700915: startup date [Thu Jan 25 22:04:16 CST 2018]; root of context hierarchy
+2018-01-25 22:04:16.819 [main] WARN  o.s.b.c.ConfigurationWarningsApplicationContextInitializer -
+				
+
+** WARNING ** : Your ApplicationContext is unlikely to start due to a @ComponentScan of the default package.
+
+
+2018-01-25 22:04:16.824 [background-preinit] INFO  org.hibernate.validator.internal.util.Version -
+				HV000001: Hibernate Validator 5.3.6.Final
+2018-01-25 22:04:28.746 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [ManageApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+2018-01-25 22:04:28.751 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer -
+				
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-01-25 22:04:28.757 [main] ERROR org.springframework.boot.SpringApplication -
+				Application startup failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [ManageApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:181)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:308)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:228)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:272)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:92)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:525)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at ManageApplication.main(ManageApplication.java:17)
+Caused by: java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:50)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:98)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:89)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:76)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:93)
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:693)
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getSuperClass(ConfigurationClassParser.java:857)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:328)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:245)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:190)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:292)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:245)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:198)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:167)
+	... 11 common frames omitted
+2018-01-25 22:13:03.824 [main] INFO  ManageApplication -
+				Starting ManageApplication on DESKTOP-5U3F3G2 with PID 12772 (D:\work\intellij\mimiduo-parent\mimiduo-manager\mimiduo-manager-web\target\classes started by Administrator in D:\work\intellij\mimiduo-parent)
+2018-01-25 22:13:03.827 [main] INFO  ManageApplication -
+				The following profiles are active: dev
+2018-01-25 22:13:04.059 [background-preinit] INFO  org.hibernate.validator.internal.util.Version -
+				HV000001: Hibernate Validator 5.3.6.Final
+2018-01-25 22:13:04.104 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1700915: startup date [Thu Jan 25 22:13:04 CST 2018]; root of context hierarchy
+2018-01-25 22:13:04.114 [main] WARN  o.s.b.c.ConfigurationWarningsApplicationContextInitializer -
+				
+
+** WARNING ** : Your ApplicationContext is unlikely to start due to a @ComponentScan of the default package.
+
+
+2018-01-25 22:14:15.741 [main] INFO  ManageApplication -
+				Starting ManageApplication on DESKTOP-5U3F3G2 with PID 10108 (D:\work\intellij\mimiduo-parent\mimiduo-manager\mimiduo-manager-web\target\classes started by Administrator in D:\work\intellij\mimiduo-parent)
+2018-01-25 22:14:15.744 [main] INFO  ManageApplication -
+				The following profiles are active: dev
+2018-01-25 22:14:16.073 [background-preinit] INFO  org.hibernate.validator.internal.util.Version -
+				HV000001: Hibernate Validator 5.3.6.Final
+2018-01-25 22:14:16.122 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@1700915: startup date [Thu Jan 25 22:14:16 CST 2018]; root of context hierarchy
+2018-01-25 22:14:16.161 [main] WARN  o.s.b.c.ConfigurationWarningsApplicationContextInitializer -
+				
+
+** WARNING ** : Your ApplicationContext is unlikely to start due to a @ComponentScan of the default package.
+
+
+2018-01-25 22:14:26.998 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [ManageApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+2018-01-25 22:14:27.004 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer -
+				
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-01-25 22:14:27.011 [main] ERROR org.springframework.boot.SpringApplication -
+				Application startup failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [ManageApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:181)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:308)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:228)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:272)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:92)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:525)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at ManageApplication.main(ManageApplication.java:17)
+Caused by: java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:50)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:98)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:89)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:76)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:93)
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:693)
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getSuperClass(ConfigurationClassParser.java:857)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:328)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:245)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:190)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:292)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:245)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:198)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:167)
+	... 11 common frames omitted
+2018-01-25 22:44:08.288 [main] INFO  ManageApplication -
+				Starting ManageApplication on DESKTOP-5U3F3G2 with PID 11688 (D:\work\intellij\mimiduo-parent\mimiduo-manager\mimiduo-manager-web\target\classes started by Administrator in D:\work\intellij\mimiduo-parent)
+2018-01-25 22:44:08.291 [main] INFO  ManageApplication -
+				The following profiles are active: dev
+2018-01-25 22:44:08.560 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@c267ef4: startup date [Thu Jan 25 22:44:08 CST 2018]; root of context hierarchy
+2018-01-25 22:44:08.570 [main] WARN  o.s.b.c.ConfigurationWarningsApplicationContextInitializer -
+				
+
+** WARNING ** : Your ApplicationContext is unlikely to start due to a @ComponentScan of the default package.
+
+
+2018-01-25 22:44:08.686 [background-preinit] INFO  org.hibernate.validator.internal.util.Version -
+				HV000001: Hibernate Validator 5.3.6.Final
+2018-01-25 22:44:19.330 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [ManageApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+2018-01-25 22:44:19.334 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer -
+				
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-01-25 22:44:19.340 [main] ERROR org.springframework.boot.SpringApplication -
+				Application startup failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [ManageApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:181)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:308)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:228)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:272)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:92)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:525)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at ManageApplication.main(ManageApplication.java:17)
+Caused by: java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:50)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:98)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:89)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:76)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:93)
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:693)
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getSuperClass(ConfigurationClassParser.java:857)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:328)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:245)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:190)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:292)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:245)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:198)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:167)
+	... 11 common frames omitted

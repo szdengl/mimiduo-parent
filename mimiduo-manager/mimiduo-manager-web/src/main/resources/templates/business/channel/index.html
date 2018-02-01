@@ -1,0 +1,502 @@
+<div id="easyui-layout-content" class="easyui-layout" data-options="fit:true" >
+        <!--  center panel -->
+        <div data-options="region:'center',split:true,border:false," style="height:750px;">
+            <table id="channeldg" title="通道接入列表" class="easyui-datagrid"
+                   data-options="fit:true, remoteSort:true,pageSize:100,pageList:[100,125]"
+                   style="width: auto; height: auto"
+                   th:attr="url=@{/admin/channels/data/list},data-save-url=@{/admin/channels/add},data-update-url=@{/admin/channels/update},data-delete-url=@{/admin/channels/delete},statusJSON=${statusJSON},attributeJSON=${attributeJSON},actionJSON=${actionJSON},companyJSON=${companyJSON}"
+                   toolbar="#toolbar" pagination="true" rownumbers="true"
+                   fitColumns="true" singleSelect="true">
+                <thead>
+                <tr>
+                    <th field="companyId" formatter="app.business.channel.companyName"
+                        data-options="width:80,halign:'center'"
+                        sortable="true">所属公司
+                    </th>
+                    <th field="name" data-options="width:80,halign:'center'"
+                        sortable="true">业务名称
+                    </th>
+                    <th field="spnumber" data-options="width:80,halign:'center'"
+                        sortable="true">长号码
+                    </th>
+                    <th field="cmd" data-options="width:80,halign:'center'"
+                        sortable="true">指令
+                    </th>
+                    <th field="fee" data-options="width:80,halign:'center'"
+                        sortable="true">金额
+                    </th>
+                    <th field="feeType" formatter="app.business.channel.attributeStatus"
+                        data-options="width:80,halign:'center'" sortable="true">计费类型
+                    </th>
+                    <th field="serviceType"
+                        formatter="app.business.channel.attributeStatus"
+                        data-options="width:80,halign:'center'" sortable="true">业务类型
+                    </th>
+                    <th field="isstatus" formatter="app.business.channel.formatStatus"
+                        data-options="width:80,halign:'center'" sortable="true">目前状态
+                    </th>
+                    <th field="id" formatter="app.business.channel.formatToolBtns"
+                        data-options="width:120,halign:'center',align:'center'">操作
+                    </th>
+                </tr>
+                </thead>
+            </table>
+            <div id="toolbar" style="padding: 5px; height: auto">
+                <div>
+                    <form id="channel_search_form">
+                        <label>名称:</label>
+                        <input type="text" id="f_name" name="f_name" style="width: 156px"/>
+                        <label>长号码:</label>
+                        <input type="text" id="f_spnumber" name="f_spnumber" style="width: 156px"/>
+                        <label>选择通道商:</label>
+                        <select class="easyui-combobox" id="f_company_id" name="f_company_id" panelHeight="auto"
+                                style="width: 156px"
+                                data-options="valueField:'id',textField:'name', editable:false, panelHeight:'auto'"
+                                th:attr="url=@{/admin/companys/data/select}"></select>
+                        <label>状态:</label>
+                        <select id="f_isstatus" name="f_isstatus" class="easyui-combobox" style="width: 100px;">
+                            <option value="-1" selected="selected">全部</option>
+                            <option value="0">激活</option>
+                            <option value="1">禁用</option>
+                            <option value="2">测试</option>
+                        </select>
+                        <a href="#" class="easyui-linkbutton" iconCls="icon-search"
+                           onclick="app.business.channel.onSearch()" style="margin-left: 10px;">查询</a>
+                        <a href="javascript:void(0)" class="self-button easyui-linkbutton"
+                           iconCls="icon-add" plain="true"
+                           onclick="app.business.channel.newChannel()">新增</a>
+                        <a href="javascript:void(0)" class="self-button easyui-linkbutton"
+                           iconCls="icon-reload" plain="true"
+                           onclick="app.business.channel.refreshChannel()">刷新</a>
+                    </form>
+                </div>
+            </div>
+            <div id="channels-dlg" class="easyui-dialog"
+                 style="width: 980px; height: 550px; padding: 10px 20px 0"
+                 closed="true" buttons="#dlg-buttons"
+                 data-options="resizable:true,modal:true">
+                <form id="channels-fm" method="post" novalidate="novalidate">
+                    <input name="companyId" id="companyId" type="hidden"/>
+                    <table cellspacing="0" bordercolordark='#91A2AE' cellpadding="5"
+                           width="100%" border="1"
+                           style="border-color: #91A2AE; border-width: 1px; border-style: solid; width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td height="25" width="15%" align="right">业务名称 ：</td>
+                            <td height="25" width="*" align="left">
+                                <input name="name" class="easyui-validatebox"   required="required"/></td>
+                            <td></td>
+                            <td height="25" width="15%" align="right">计费类型 ：</td>
+                            <td height="25" width="*" align="left">
+                                <select class="easyui-combobox" name="feeType"  style="width: 156px; height: 30px;"
+                                                                           required="required"
+                                                                           data-options="valueField:'id',textField:'name', editable:false, panelHeight:'auto'"
+                                                                           th:attr="url=@{/admin/common/data/attributes/list?type=1}"></select>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">运 营 商 ：</td>
+                            <td height="25" width="*" align="left">
+                                <select class="easyui-combobox" name="operator"
+                                                                           style="width: 156px; height: 30px;"
+                                                                           required="required"
+                                                                           data-options="valueField:'id',textField:'name',editable:false, panelHeight:'auto'"
+                                                                           th:attr="url=@{/admin/common/data/attributes/list?type=2}"></select>
+                            </td>
+                            <td></td>
+                            <td height="25" width="15%" align="right">业务类型 ：</td>
+                            <td height="25" width="*" align="left">
+                                <select class="easyui-combobox" name="serviceType"
+                                                                           style="width: 156px; height: 30px;"
+                                                                           required="required"
+                                                                           data-options="valueField:'id',textField:'name',editable:false, panelHeight:'auto'"
+                                                                           th:attr="url=@{/admin/common/data/attributes/list?type=3}"></select>
+                            </td>
+                            <td></td>
+                        </tr>
+
+                        <tr>
+                            <td height="25" width="15%" align="right">屏蔽端口：</td>
+                            <td colspan="4"><textarea name="shieldPort" width="90%"></textarea></td>
+                            <td>多个端口之间用|号隔开</td>
+
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">屏蔽城市：</td>
+                            <td colspan="4"><textarea name="shieldCity" width="90%"></textarea></td>
+                            <td>多个城市之间用|号隔开，不分省份</td>
+                        </tr>
+
+                        <tr>
+                            <td height="25" width="15%" align="right">接入价格 ：</td>
+                            <td height="25" width="*" align="left"><input
+                                    name="accessPrice" class="easyui-validatebox"/></td>
+                            <td></td>
+                            <td height="25" width="15%" align="right">工作状态 ：</td>
+                            <td height="25" width="*" align="left"><select id="isstatus" name="isstatus"
+                                                                           class="easyui-combobox"   required="required"
+                                                                           style="width: 100px; height: 30px">
+                                <option value="0" selected="selected">激活</option>
+                                <option value="1">禁用</option>
+                                <option value="2">测试</option>
+                            </select></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">价格 ：</td>
+                            <td height="25" width="*" align="left">
+                                <input name="fee" class="easyui-validatebox" required="required"/></td>
+                            <td>(单位：分)</td>
+                            <td height="25" width="15%" align="right">下发间隔：</td>
+                            <td height="25" width="*" align="left"><input name="intervals" class="easyui-validatebox"
+                                                                          required="required"/></td>
+                            <td>间隔多久执行(单位:分)<br/>等待短信时间(单位:秒)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">按键(IVR专用)：</td>
+                            <td colspan="4"><textarea name="keyContent" width="90%"></textarea></td>
+                            <td>格式：秒|按键,秒|按键</td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">结算价格：</td>
+                            <td colspan="4"><input name="separate" class="easyui-validatebox"/></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="22" align="center" colspan="6"><strong>第一步</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">指令内容 ：</td>
+                            <td height="25" width="55%" align="left" colspan="4"><textarea  name="cmd" width="90%"
+                                                                                           rows="5"></textarea></td>
+                            <td>IVR:拨打时间(秒)<br/>WAP:URL<br/>第三方API
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">长号码 ：</td>
+                            <td height="25" width="*" align="left"><textarea name="spnumber"></textarea></td>
+                            <td></td>
+                            <td height="25" width="15%" align="right">操作类型：</td>
+                            <td height="25" width="*" align="left"><select id="visitType" name="visitType"
+                                                                           class="easyui-combobox"
+                                                                           style="width: 100px; height: 30px">
+                                <option value="1" selected="selected">联网</option>
+                                <option value="2">发送短信</option>
+                            </select></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="20%" align="right">是否执行 ：</td>
+                            <td height="25" width="*" align="left"><select id="isExec"
+                                                                           name="isExec" class="easyui-combobox"
+                                                                           style="width: 100px; height: 30px">
+                                <option value="0" selected="selected">否</option>
+                                <option value="1">是</option>
+                            </select></td>
+                            <td></td>
+                            <td height="25" width="20%" align="right">同步数据：</td>
+                            <td height="25" width="*" align="left">
+                                <select id="isSycn"   name="isSycn" class="easyui-combobox"
+                                        style="width: 100px; height: 30px">
+                                    <option value="0" selected="selected">否</option>
+                                    <option value="1">是</option>
+                                </select></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">下行关键字：</td>
+                            <td colspan="4"><textarea name="flowControl" width="90%"
+                                                      rows="3"></textarea></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">下行内容类型:</td>
+                            <td height="25" width="*" align="left">
+                                <select    id="contentType" name="contentType" class="easyui-combobox"
+                                        style="width: 100px; height: 30px">
+                                    <option value="1" selected="selected">文本</option>
+                                    <option value="2">JSON</option>
+                                    <option value="3">文本|JSON</option>
+                                </select></td>
+                            <td></td>
+                            <td height="25" width="15%" align="right">访问方式:</td>
+                            <td height="25" width="*" align="left">
+                                <select id="isGet" name="isGet" class="easyui-combobox"
+                                        style="width: 100px; height: 30px">
+                                    <option value="1" selected="selected">POST</option>
+                                    <option value="2">GET</option>
+                                </select></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="22" align="center" colspan="6"><strong>第二步</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">指令内容 ：</td>
+                            <td height="25" width="55%" align="left" colspan="4">
+                                <textarea name="cmd1" width="90%" rows="5"></textarea></td>
+                            <td>IVR:拨打时间(秒)<br/>WAP:URL<br/>第三方API
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">长号码 ：</td>
+                            <td height="25" width="*" align="left"><textarea
+                                    name="spnumber1"></textarea></td>
+                            <td></td>
+                            <td height="25" width="15%" align="right">操作类型：</td>
+                            <td height="25" width="*" align="left"><select
+                                    id="visitType1" name="visitType1" class="easyui-combobox"
+                                    style="width: 100px; height: 30px">
+                                <option value="1">联网</option>
+                                <option value="2" selected="selected">发送短信</option>
+                            </select></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="20%" align="right">是否执行 ：</td>
+                            <td height="25" width="*" align="left"><select id="isExec1"
+                                                                           name="isExec1" class="easyui-combobox"
+                                                                           style="width: 100px; height: 30px">
+                                <option value="0" selected="selected">否</option>
+                                <option value="1">是</option>
+                            </select></td>
+                            <td></td>
+                            <td height="25" width="20%" align="right">同步数据：</td>
+                            <td height="25" width="*" align="left"><select id="isSycn1"
+                                                                           name="isSycn1" class="easyui-combobox"
+                                                                           style="width: 100px; height: 30px">
+                                <option value="0" selected="selected">否</option>
+                                <option value="1">是</option>
+                            </select></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">下行关键字：</td>
+                            <td colspan="4"><textarea name="flowControl1" width="90%"
+                                                      rows="3"></textarea></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">下行内容类型:</td>
+                            <td height="25" width="*" align="left"><select
+                                    id="contentType1" name="contentType1" class="easyui-combobox"
+                                    style="width: 100px; height: 30px"
+                                    data-options="panelHeight:'auto'">
+                                <option value="1" selected="selected">文本</option>
+                                <option value="2">JSON</option>
+                                <option value="3">文本|JSON</option>
+                            </select></td>
+                            <td></td>
+                            <td height="25" width="15%" align="right">访问方式:</td>
+                            <td height="25" width="*" align="left"><select id="isGet1"
+                                                                           name="isGet1" class="easyui-combobox"
+                                                                           style="width: 100px; height: 30px">
+                                <option value="1" selected="selected">POST</option>
+                                <option value="2">GET</option>
+                            </select></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="22" align="center" colspan="6"><strong>第三步</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">指令内容 ：</td>
+                            <td height="25" width="55%" align="left" colspan="4"><textarea
+                                    name="cmd2" width="90%" rows="5"></textarea></td>
+                            <td>IVR:拨打时间(秒)<br/>WAP:URL<br/>第三方API
+                            </td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">长号码 ：</td>
+                            <td height="25" width="*" align="left"><textarea
+                                    name="spnumber2"></textarea></td>
+                            <td></td>
+                            <td height="25" width="15%" align="right">操作类型：</td>
+                            <td height="25" width="*" align="left"><select
+                                    id="visitType2" name="visitType2" class="easyui-combobox"
+                                    style="width: 100px; height: 30px">
+                                <option value="1" selected="selected">联网</option>
+                                <option value="2">发送短信</option>
+                            </select></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="20%" align="right">是否执行 ：</td>
+                            <td height="25" width="*" align="left"><select id="isExec2"
+                                                                           name="isExec2" class="easyui-combobox"
+                                                                           style="width: 100px; height: 30px">
+                                <option value="0" selected="selected">否</option>
+                                <option value="1">是</option>
+                            </select></td>
+                            <td></td>
+                            <td height="25" width="20%" align="right">同步数据：</td>
+                            <td height="25" width="*" align="left"><select id="isSycn2"
+                                                                           name="isSycn2" class="easyui-combobox"
+                                                                           style="width: 100px; height: 30px">
+                                <option value="0" selected="selected">否</option>
+                                <option value="1">是</option>
+                            </select></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">下行关键字：</td>
+                            <td colspan="4"><textarea name="flowControl2" width="90%"
+                                                      rows="3"></textarea></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td height="25" width="15%" align="right">下行内容类型:</td>
+                            <td height="25" width="*" align="left"><select
+                                    id="contentType2" name="contentType2" class="easyui-combobox"
+                                    style="width: 100px; height: 30px">
+                                <option value="1" selected="selected">文本</option>
+                                <option value="2">JSON</option>
+                                <option value="3">文本|JSON</option>
+                            </select></td>
+                            <td></td>
+                            <td height="25" width="15%" align="right">访问方式:</td>
+                            <td height="25" width="*" align="left"><select id="isGet2"
+                                                                           name="isGet2" class="easyui-combobox"
+                                                                           style="width: 100px; height: 30px">
+                                <option value="1" selected="selected">POST</option>
+                                <option value="2">GET</option>
+                            </select></td>
+                            <td></td>
+                        </tr>
+                    </table>
+
+                </form>
+            </div>
+            <div id="dlg-buttons">
+                <a href="javascript:void(0)" class="easyui-linkbutton"
+                   iconCls="icon-ok" onclick="app.business.channel.saveChannel()">确定</a>
+                <a href="javascript:void(0)" class="easyui-linkbutton"
+                   iconCls="icon-cancel"
+                   onclick="javascript:$('#channels-dlg').dialog('close')">取消</a>
+            </div>
+        </div>
+        <!-- end north -->
+
+        <!--  center panel -->
+        <div data-options="region:'south',split:true,collapsed:true,"  title="省份管理">
+                <div title="省份分配" data-options="tools:'#p-tools',fit:true"
+                     style="padding: 10px">
+                    <input type="hidden" id="province-channelId" name="province-channelId"/>
+                    <table id="channeldg-channel-province" class="easyui-datagrid"
+                           style="width: 800px;"
+                           th:attr="data-url=@{/admin/channels/data/province/list},data-save-url=@{/admin/channels/province/add},data-update-url=@{/admin/channels/province/update},data-delete-url=@{/admin/channels/province/delete}"
+                           toolbar="#province-toolbar" rownumbers="true" fitColumns="true"
+                           singleSelect="true">
+                        <thead>
+                        <tr>
+                            <th field="provinceId" data-options="width:80,halign:'center'">省份</th>
+                            <th field="dayLimit" data-options="width:80,halign:'center'">日限</th>
+                            <th field="monthLimit" data-options="width:80,halign:'center'">月限</th>
+                            <th field="startime" data-options="width:80,halign:'center'">开始时间</th>
+                            <th field="endtime" data-options="width:80,halign:'center'">结束时间</th>
+                            <th field="isstatus" formatter="app.business.channel.formatStatus"
+                                data-options="width:80,halign:'center'" sortable="true">目前状态
+                            </th>
+                        </tr>
+                        </thead>
+                    </table>
+                    <div id="province-toolbar" style="padding: 5px; height: auto">
+                        <div style="margin-bottom: 5px">
+                            <a href="javascript:void(0)"
+                               class="self-button easyui-linkbutton" iconCls="icon-add"
+                               plain="true" onclick="app.business.channel.newProvince()">开通</a> <a
+                                href="javascript:void(0)" class="self-button easyui-linkbutton"
+                                iconCls="icon-edit" plain="true"
+                                onclick="app.business.channel.editProvince()">编辑</a> <a
+                                href="javascript:void(0)" class="self-button easyui-linkbutton"
+                                iconCls="icon-remove" plain="true"
+                                onclick="app.business.channel.destroyProvince()">移除</a>
+                        </div>
+                    </div>
+                    <div id="channel-province-dlg" class="easyui-dialog"
+                         style="width: 700px; height: 360px; padding: 0px 0px"
+                         closed="true" buttons="#dlg-province-buttons"
+                         data-options="resizable:true,modal:true">
+                        <form id="channels-province-fm" method="post"
+                              novalidate="novalidate">
+                            <input name="channelId" id="channelId" type="hidden"/>
+                            <table cellspacing="0" bordercolordark='#91A2AE' cellpadding="5"
+                                   width="100%" border="1"
+                                   style="border-color: #91A2AE; border-width: 1px; border-style: solid; width: 100%; border-collapse: collapse;">
+                                <tr>
+                                    <td height="25" width="15%" align="right">开通省份 ：</td>
+                                    <td height="25" width="*" align="left"><select
+                                            class="easyui-combobox" name="provinceId" id="provinceId"
+                                            style="width: 200px; height: 90px;" editable="false"
+                                            required="required"
+                                            data-options="valueField:'name',textField:'name',multiple:true,multiline:true"
+                                            th:attr="url=@{/admin/common/data/province/list}"></select></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td height="25" width="25%" align="right">起止时间 ：</td>
+                                    <td height="25" width="*" align="left"><input
+                                            name="startime"    required="required" class="easyui-validatebox"
+                                            style="width: 50px"/>----<input name="endtime"
+                                                                            required="required" class="easyui-validatebox"
+                                                                            style="width: 50px"/></td>
+                                    <td>上量时间 如：7----24</td>
+                                </tr>
+                                <tr>
+                                    <td height="25" width="15%" align="right">日限：</td>
+                                    <td height="25" width="*" align="left"><input
+                                            name="dayLimit"   required="required" class="easyui-validatebox"/></td>
+                                    <td>每日下发指令最大的限制，按收到通道同步状态报告为准，如果不需要日限，请输入0</td>
+                                </tr>
+                                <tr>
+                                    <td height="25" width="15%" align="right">月限：</td>
+                                    <td height="25" width="*" align="left"><input
+                                            name="monthLimit"   required="required" class="easyui-validatebox"/></td>
+                                    <td>每月下发指令最大的限制，按收到通道同步状态报告为准，如果不需要月限，请输入0</td>
+                                </tr>
+
+                                <tr>
+                                    <td height="25" width="15%" align="right">屏蔽关键字：</td>
+                                    <td><textarea name="shieldKeyword"  width="90%" rows="5"></textarea></td>
+                                    <td>用|分隔多个关键字</td>
+                                </tr>
+                                <tr>
+                                    <td width="15%" align="right">回复内容:</td>
+                                    <td><textarea name="replyContent"  width="90%" rows="5"></textarea></td>
+                                    <td>用于回复订购确认等询问信息。如：是，Y，确认。 若关键字中有*号，则代表需要动态提取内容进行回复。</td>
+                                </tr>
+                                <tr>
+                                    <td height="25" width="15%" align="right">工作状态 ：</td>
+                                    <td height="25" width="*" align="left"><select  name="isstatus"
+                                                                                   class="easyui-combobox"
+                                                                                    required="required"   style="width: 100px; height: 30px">
+                                        <option value="0" selected="selected">激活</option>
+                                        <option value="1">禁用</option>
+                                        <option value="2">测试</option>
+                                    </select></td>
+                                    <td></td>
+                                </tr>
+                            </table>
+                        </form>
+                    </div>
+                    <div id="dlg-province-buttons">
+                        <a href="javascript:void(0)" class="easyui-linkbutton"
+                           iconCls="icon-ok" onclick="app.business.channel.saveProvince()">确定</a>
+                        <a href="javascript:void(0)" class="easyui-linkbutton"
+                           iconCls="icon-cancel"
+                           onclick="javascript:$('#channel-province-dlg').dialog('close')">取消</a>
+                    </div>
+                </div>
+        </div>
+        <!-- end center -->
+    </div>
+    <!-- end easyui-layout -->
+
+<script type="text/javascript" th:src="@{/assets/js/business/channel.js}"></script>
+<script>
+    app.business.channel.init();
+</script>

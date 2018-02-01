@@ -1,0 +1,105 @@
+<table id="menus_dg" title="导航菜单树" class="easyui-treegrid"
+  data-options="fit:true, onLoadSuccess: app.admin.menus.onLoadSuccess,idField: 'id',treeField: 'name',pageSize:25,pageList:[25,50,75,100,125]"
+  style="width: auto; height: auto"
+  th:attr="data-load-url=@{/admin/menus/data/menus.json},data-update-url=@{/admin/menus/update},data-save-url=@{/admin/menus},data-delete-url=@{/admin/menus/delete}"
+  toolbar="#menusToolbar" pagination="true" fitColumns="true" singleSelect="true">
+  <thead>
+    <tr>
+      <th field="name" data-options="width:120,halign:'center'">名称</th>
+      <th field="url" data-options="width:80,halign:'center'">URL</th>
+      <th field="perm" data-options="width:80,halign:'center'">对应权限</th>
+      <th field="iconCls" data-options="width:80,halign:'center'">图标class</th>
+      <th field="sort" data-options="width:80,halign:'center'">排序号</th>
+      <th field="description" data-options="width:80,halign:'center'">描述</th>
+      <th field="createdDate" data-options="width:80,halign:'center',align:'center'">创建时间</th>
+      <th field="createdBy" formatter="app.formatters.userName" data-options="width:80,halign:'center',align:'center'">创建人</th>
+      <th field="isActived" formatter="app.formatters.activeFormatters"
+            data-options="width:80,halign:'center',align:'center'">是否有效</th>  
+    </tr>
+  </thead>
+</table>
+<div id="menusToolbar" style="padding: 5px; height: auto">
+  <div style="margin-bottom: 5px">
+  
+ 	 <form id="menus_search_form">
+      <label>名称:</label> <input type="text" id="f_name" name="f_name" style="width: 156px;" /> <a href="#"
+        class="easyui-linkbutton" iconCls="icon-search" onclick="app.admin.menus.onSearch()"
+        style="margin: -3px 0 0 10px;">查询</a>
+      <shiro:hasPermission name="Menu:new">
+	      <a style="margin-left: 50px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-add" plain="true" onclick="app.admin.menus.newMenu()">新增</a> 
+	  </shiro:hasPermission>
+	  <shiro:hasPermission name="Menu:edit">
+	      <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="app.admin.menus.editMenu()">编辑</a> 
+	  </shiro:hasPermission>
+	  <shiro:hasPermission name="Menu:remove">
+	      <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.admin.menus.destroyMenu()">删除</a> 
+      </shiro:hasPermission>
+      <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="app.admin.menus.refresh()">刷新</a>
+   	 </form>
+   	 
+  	</div>
+</div>
+
+<div id="menus-dlg" class="easyui-dialog" style="width: 480px; height: 500px; padding: 10px 20px 0" closed="true"
+  buttons="#menusDlg-buttons" data-options="resizable:true,modal:true">
+  <form id="menus-fm" method="post" novalidate="novalidate">
+    <div class="fitem">
+      <div class="newWindow">
+        <label>名称:</label> <input name="name" class="easyui-validatebox" required="required" validtype="length[0,30]"
+          invalidMessage="有效长度0-30" />
+      </div>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>URL:</label> <input name="url" class="easyui-validatebox" validtype="length[0,200]"
+          invalidMessage="有效长度0-200" />
+      </div>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>对应权限:</label> <input name="perm" />
+      </div>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>图标class:</label> <input name="iconCls" />
+      </div>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>排序号:</label> <input name="sort" class="easyui-numberbox" style="width: 256px; height: 30px;"/> 
+        <br/><p style="color:#FF5E12;padding:0 82px 0 84px;">降序: 值越小越排在前面</p>
+      </div>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>上一级菜单:</label> <input class="easyui-combotree" id="menus_parent_id" name="parent.id" value=""
+          data-options="loadFilter: app.admin.menus.combotreeLoadFilter"
+          th:attr="data-load-url=@{/admin/menus/data/menus_nopage.json},data-list-url=@{/admin/menus/data/menus_nopageList.json}"
+          style="width: 256px; height: 30px;" />
+      </div>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>描述:</label>
+        <textarea name="description" validtype="length[0,200]" invalidMessage="有效长度0-200"></textarea>
+      </div>
+    </div>
+    <div class="fitem">
+          <div class="newWindow">
+              <label>是否有效:</label>
+              <input type="checkbox" name="isActived" value="1" style="vertical-align: middle; margin-left: -110px;"/>
+          </div>
+      </div>
+  </form>
+</div>
+<div id="menusDlg-buttons">
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="app.admin.menus.saveMenu()">确定</a> <a
+    href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+    onclick="javascript:$('#menus-dlg').dialog('close')">取消</a>
+</div>
+
+<script type="text/javascript" th:src="@{/assets/js/admin/system_manage.js}"></script>
+<script type="text/javascript">
+    app.admin.menus.init();
+</script>

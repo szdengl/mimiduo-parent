@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="mimiduo-common" />
+        <module name="mimiduo-data" />
+        <module name="mimiduo-manager-dao" />
+        <module name="mimiduo-manager-pojo" />
+        <module name="mimiduo-manager-service" />
+        <module name="mimiduo-manager-web" />
+        <module name="mimiduo-pojo" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="mimiduo-common" target="1.8" />
+      <module name="mimiduo-data" target="1.8" />
+      <module name="mimiduo-manager" target="1.8" />
+      <module name="mimiduo-manager-dao" target="1.8" />
+      <module name="mimiduo-manager-pojo" target="1.8" />
+      <module name="mimiduo-manager-service" target="1.8" />
+      <module name="mimiduo-manager-web" target="1.8" />
+      <module name="mimiduo-parent" target="1.8" />
+      <module name="mimiduo-pojo" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

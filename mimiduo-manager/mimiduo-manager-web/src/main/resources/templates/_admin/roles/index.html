@@ -1,0 +1,154 @@
+<div id="easyui-layout-content" class="easyui-layout" data-options="fit:true">
+  <div data-options="region:'north',split:true,border:false" style="height: 400px;">
+    <table id="role_dg" title="角色列表" class="easyui-datagrid"
+      data-options="fit:true, onLoadSuccess: app.admin.roles.onLoadSuccess, onClickRow: app.admin.roles.onClickRow,pageSize:25,pageList:[25,50,75,100,125]"
+      th:attr="data-load-url=@{/admin/roles/data/roles.json},data-update-url=@{/admin/roles/update},data-save-url=@{/admin/roles},data-delete-url=@{/admin/roles/delete},rolesJSON=${rolesJSON},typesJSON=${typesJSON}"
+      toolbar="#roleToolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
+      <thead>
+        <tr>        
+          <th field="name" data-options="width:80,halign:'center'">名称</th>
+          <th field="realm" data-options="width:80,halign:'center'">领域</th>
+          <th field="description" data-options="width:80,halign:'center'">描述</th>
+          <th field="createdDate" data-options="width:80,halign:'center',align:'center'">创建时间</th>
+          <th field="createdBy" formatter="app.formatters.userName"
+            data-options="width:80,halign:'center',align:'center'">创建人</th> 
+           <th field="isActived" formatter="app.formatters.activeFormatters"
+            data-options="width:80,halign:'center',align:'center'">是否有效</th>  
+          <!-- <th field="id" formatter="app.admin.roles.formatToolBtns" data-options="width:80,halign:'center'">#</th> -->
+        </tr>
+      </thead>
+    </table>
+    <div id="roleToolbar" style="padding: 5px; height: auto">
+      <div style="margin-bottom: 5px">
+      
+	      <form id="roles_search_form">
+	          <label>名称:</label> <input type="text" id="f_name" name="f_name" style="width: 156px;" /> <label>领域:</label> <input
+	            type="text" id="f_realm" name="f_realm" style="width: 156px;" /> <a href="#" class="easyui-linkbutton"
+	            iconCls="icon-search" onclick="app.admin.roles.onSearch()" style="margin: -4px 0 0 10px;">查询</a>
+	          <shiro:hasPermission name="Role:new">
+		          <a style="margin-left: 50px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-add" plain="true" onclick="app.admin.roles.newRole()">新增</a>
+		      </shiro:hasPermission>
+		      <shiro:hasPermission name="Role:edit">
+		          <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="app.admin.roles.editRole()">编辑</a> 
+		      </shiro:hasPermission>
+		      <shiro:hasPermission name="Role:remove">
+		          <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.admin.roles.destroyRole()">删除</a>
+		      </shiro:hasPermission>
+		      <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="app.admin.roles.refreshRoles()">刷新</a>
+	      
+	       </form>
+       </div>
+    </div>
+
+    <div id="roles-dlg" class="easyui-dialog" style="width: 480px; height: 320px; padding: 10px 20px 0" closed="true"
+      buttons="#roleDlg-buttons" data-options="resizable:true,modal:true">
+      <form id="roles-fm" method="post" novalidate="novalidate">
+        <div class="fitem">
+          <div class="newWindow">
+            <label>名称:</label> <input name="name" class="easyui-validatebox" required="required"
+              validtype="length[0,30]" invalidMessage="有效长度0-30" />
+          </div>
+        </div>
+        <div class="fitem">
+          <div class="newWindow">
+            <label>领域:</label> <input name="realm" class="easyui-validatebox" validtype="length[0,50]"
+              invalidMessage="有效长度0-50" />
+          </div>
+        </div>
+        <div class="fitem">
+          <div class="newWindow">
+            <label>描述:</label>
+            <textarea name="description" validtype="length[0,200]" invalidMessage="有效长度0-200"></textarea>
+          </div>
+        </div>
+   
+         <div class="fitem">
+          <div class="newWindow">
+          	<label>是否有效:</label>
+            <input type= "checkbox" name="isActived" value="1" style="vertical-align: middle; margin-left: -110px;"></input>
+          </div>
+        </div>
+       
+      </form>
+    </div>
+    <div id="roleDlg-buttons">
+      <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" onclick="app.admin.roles.saveRole()">确定</a>
+      <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel"
+        onclick="javascript:$('#roles-dlg').dialog('close')">取消</a>
+    </div>
+  </div>
+
+  <div data-options="region:'center',border:false">
+    <div id="role-panel-detail" class="easyui-panel" title="角色管理" data-options="fit:true">
+      <div id="tabs" class="easyui-tabs" data-options="fit:true" style="width: auto; height: auto">
+        <div title="分配直属权限" data-options="tools:'#p-tools',fit:true" style="padding: 10px">
+          <table id="dg-privileges" class="easyui-datagrid" style="width: 800px; height:330px;" data-options="remoteSort:true,multiSort:true"
+            th:attr="data-url=@{/admin/roles/data/role/privileges.json},data-save-url=@{/admin/roles/privileges},data-delete-url=@{/admin/roles/privileges/delete}"
+            toolbar="#privileges-toolbar" rownumbers="true" fitColumns="true" singleSelect="true">
+            <thead>
+              <tr>
+                <th field="name" data-options="width:240,halign:'center'" sortable="true">名称</th>
+                <th field="type" data-options="width:40,halign:'center',align:'center'" sortable="true" formatter="app.admin.roles.formatType">类型</th>
+                <th field="target" data-options="width:80,halign:'center'" sortable="true">资源</th>
+                <th field="method" data-options="width:80,halign:'center'" sortable="true">方法</th>
+                <th field="scope" data-options="width:80,halign:'center'">数据范围</th>
+              </tr>
+            </thead>
+          </table>
+          <div id="privileges-toolbar" style="padding: 5px; height: auto">
+            <div style="margin-bottom: 5px">
+            	<shiro:hasPermission name="Role:addRole">
+	              <a href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-add" plain="true"
+	                onclick="app.admin.roles.toAddRolePrivilege()">添加</a>
+	            </shiro:hasPermission>
+	            <shiro:hasPermission name="Role:destroyRole">
+	              <a href="javascript:void(0)"
+	                class="self-button easyui-linkbutton" iconCls="icon-remove" plain="true"
+	                onclick="app.admin.roles.destroyRolePrivilege()">移除</a>
+	            </shiro:hasPermission>
+	            <a href="javascript:void(0)"
+	              class="self-button easyui-linkbutton" iconCls="icon-reload" plain="true"
+	              onclick="app.admin.roles.refreshRolePrivileges()">刷新</a>
+            </div>
+          </div>
+
+          <div id="role-privileges-dlg" class="easyui-dialog" style="width: 900px; height: 520px; padding: 0px 0px"
+            closed="true" buttons="#dlg-privileges-buttons" data-options="resizable:true,modal:true">
+            <table id="privileges-select-dg" class="easyui-datagrid" data-options="fit:true,border:false,remoteSort:true,pageSize:15,pageList:[10,15,20,30,40,50,100]"
+              th:attr="data-load-url=@{/admin/privileges/data/privileges.json}"
+              style="width: auto; height: auto"
+              pagination="true" rownumbers="true" fitColumns="true" singleSelect="false">
+              <thead>
+                <tr>
+                  <th field="name" data-options="width:240,halign:'center'" sortable="true">名称</th>
+                  <th field="type" data-options="width:40,halign:'center',align:'center'" sortable="true" formatter="app.admin.roles.formatType">类型</th>
+                  <th field="target" data-options="width:80,halign:'center'" sortable="true">资源</th>
+                  <th field="method" data-options="width:80,halign:'center'" sortable="true">方法</th>
+                  <th field="scope" data-options="width:80,halign:'center'" sortable="true">数据范围</th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+          <div id="dlg-privileges-buttons">
+            <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok"
+              onclick="app.admin.roles.addRolePrivileges()">确定</a> <a href="javascript:void(0)"
+              class="easyui-linkbutton" iconCls="icon-cancel"
+              onclick="javascript:$('#role-privileges-dlg').dialog('close')">取消</a>
+          </div>
+        </div>
+
+        <div title="角色树" data-options="tools:'#p-tools'" style="padding: 10px">
+          <div class="easyui-panel" style="padding: 5px; width: 600px;">
+            <ul class="easyui-tree" id="role-privileges-tree" data-options="animate:true"
+              th:attr="data-url=@{/admin/roles/data/role/all_privileges.json}"></ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" th:src="@{/assets/js/admin/system_manage.js}"></script>
+<script>
+	app.admin.roles.init();
+</script>

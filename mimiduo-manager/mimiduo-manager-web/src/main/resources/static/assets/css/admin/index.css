@@ -1,0 +1,312 @@
+div {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.landing{
+  color:#195E86;
+}
+
+
+/*#00caff*/
+@media screen and (max-width:1440px) {
+  .rtitle {
+    font-size: 18px;
+    font-weight: bold;
+    height: 85px;
+    background:#fefeeb;
+    color: #fff;
+  }
+
+  .self-head {
+    height: 26px;
+    background-color: #fefeeb;
+    width: 100%;
+    position: absolute;
+  }
+  .self-head .operator {
+    font-size: 14px;
+    color: #423939;
+    font-family: "Arial Black", Gadget, sans-serif;
+    float: left;
+    padding-left: 5px;
+    padding-top: 0px;
+    vertical-align: middle;
+  }
+  .operator img {
+    vertical-align: middle;
+    margin-top: -4px;
+  }
+  .self-head .operate {
+    float: right;
+    position: relative;
+    padding-right: 46px;
+    padding-top: 1px;
+  }
+  .self-head .operate a img{
+    text-decoration: none;
+    margin:0px;
+    padding:0px;
+    border:0px;
+  }
+  
+  .self-head .operate a :hover {
+    text-decoration: none;
+    background-color: #99CCFF;
+    border: 0px solid;
+    border-radius: 8px 8px 0px 0px;
+  }
+}
+
+/*#00caff*/
+@media screen and (min-width:1440px) {
+  .rtitle {
+    font-size: 18px;
+    font-weight: bold;
+    height: 32px;
+     background:#fefeeb;
+    color: #fff;
+  }  
+  .self-head {
+    height: 32px;
+    background-color: #fefeeb;
+    width: 100%;
+    position: absolute;
+    margin-top: 0px;
+  }
+  .self-head .operator {
+    font-size: 16px;
+    color: #423939;
+    font-family: "Arial Black", Gadget, sans-serif;
+    float: left;
+    padding-left: 5px;
+    padding-top: 0px;
+    vertical-align: middle;
+  }
+  .operator img {
+    vertical-align: middle;
+  }
+  .self-head .operate {
+    float: right;
+    /*position: relative;*/
+    padding-right: 46px;
+    padding-top: 0px;
+  }
+
+  .self-head .operate a img{
+    text-decoration: none;
+    margin:0px;
+    padding:0px;
+    border:0px;
+  }
+  
+  .self-head .operate a :hover {
+    text-decoration: none;
+    background-color: #99CCFF;
+    border: 0px solid;
+    -webkit-border-radius:8px 8px 0px 0px;
+    border-radius: 8px 8px 0px 0px;
+  }
+}
+
+/*.icon-window {
+  background: url('../../img/window.png') no-repeat;
+}
+
+.icon-gears {
+  background: url('../../img/gears.png') no-repeat;
+}
+
+.icon-school {
+  background: url('../../img/common/tree_icons.png') no-repeat -224px 0;
+}
+
+.icon-book {
+  background: url('../../img/common/tree_icons.png') no-repeat -240px 0;
+}*/
+.newWindow input {
+  width: 252px ;
+  height: 25px ;
+}
+
+.newWindow textarea {
+  width: 250px ;
+  height: 100px ;
+  vertical-align: middle;
+}
+
+.newWindow_activitys span {
+  display: inline-block;
+  width: 200px;
+  text-align: left;
+  color: gray;
+  font-size: 14px;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.newWindow_student span {
+  display: inline-block;
+  width: 106px;
+  text-align: left;
+  color: gray;
+  font-size: 14px;
+  vertical-align: middle;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.newWindow .remark textarea {
+  width: 934px;
+  height: 60px;
+  vertical-align: middle;
+}
+/*闁告绮敮锟藉箯濞戞碍鏅稿銈囨暬濞硷拷闁哄倹婢橀·锟介柛锔芥緲濞煎啴鎳曢弮鍌炲厙闁哄倻鎳撶槐锟�/
+/*.newWHead{
+  background-repeat: repeat-x;
+  background-color: #ececeb;
+  margin-left: -20px;
+  height: 30px;
+  width: 1116px;
+  margin-bottom: 10px;
+}
+
+.newWHead span{
+  position: relative;
+  left: 10px;
+  top: 10px;
+  font-size: 13px;
+  font-weight: bolder;
+  color: #173058;
+}*/
+
+/*闁哄啨鍎辨导鎰媴濠婂棭鍚�闁告帗甯為鎼佹偠閿燂拷闁告稏鍔屾导鎰媴濠婂棭鍚�闁告帗甯為鎼佹偠閿燂拷/
+.dayschedule {
+  padding: 5px 0 5px 10px;
+}
+
+.dayschedule label {
+  color: #6D6969;
+  font-weight: bolder;
+  vertical-align: middle;
+}
+
+.dayschedule img {
+  vertical-align: middle;
+}
+
+.dayschedule #date,.dayschedule #datestart,.dayschedule #dateend {
+  width: 80px;
+  text-align: center;
+  vertical-align: middle;
+  border: 3px inset #C2D6F1;
+}
+
+.dayschedule input {
+  vertical-align: middle;
+  color: #524A4A;
+}
+
+/*闂佹寧鐟ㄩ锟�00*/
+.error500 {
+  margin: 0;
+  padding: 0;
+  background: #f9feff url(../../img/common/bg.jpg) repeat-x;
+  line-height: 18px;
+}
+
+.img500 {
+  background: url(../../img/common/p1.png) center center no-repeat;
+  width: 745px;
+  height: 258px;
+  margin: 90px auto 50px auto;
+  position: relative;
+}
+
+.img500 img {
+  border: none;
+  padding: 0px;
+  margin: 0px;
+}
+
+.back {
+  position: absolute;
+  bottom: 0px;
+  right: 180px;
+}
+
+.cloud {
+  margin: 0 auto;
+  height: 70px;
+  background: url(../../img/common/yuncai.jpg) no-repeat top;
+  background-color: #cbf3ff;
+}
+
+.Copyright {
+  margin: 20px auto 30px auto;
+  width: 970px;
+  height: 75px;
+  font-size: 12px;
+  border-top: 1px solid #a6cbe4;
+}
+
+.Copyright p {
+  text-align: center;
+  line-height: 19px;
+  margin-top: 3px;
+  color: #494949;
+}
+
+/*闂佹寧鐟ㄩ锟�04*/
+.c_404 {
+  height: 400px;
+  width: 950px;
+  margin: 25px auto;
+}
+
+.c_404 .error {
+  background: url(../../img/common/404_1.gif) no-repeat;
+  width: 500px;
+  padding-left: 130px;
+  height: 200px;
+  float: left;
+  margin-top: 120px;
+  margin-left: 260px;
+  display: inline;
+}
+
+.c_404 .error span {
+  color: #ff6633;
+  font-size: 30px;
+  font-weight: bold;
+  float: left;
+  margin: 20px 0px 0px 20px;
+  display: inline;
+}
+
+.clear {
+  clear: both;
+}
+
+.c_404 .error p {
+  font-size: 18px;
+  font-weight: bold;
+  float: left;
+  margin: 20px 0px 0px 20px;
+  display: inline;
+}
+
+.c_404 .error p a {
+  font-size: 18px;
+  font-weight: bold;
+  color: #666;
+  text-decoration: none;
+}
+
+.checkbox{
+  text-align: center;
+}
+/*checkbox闁哄倸娲ら悺褏锟借ぐ鎺旂Х*/
+.checkbox label, .checkbox input{
+  vertical-align:middle; 
+  text-align:middle;
+}

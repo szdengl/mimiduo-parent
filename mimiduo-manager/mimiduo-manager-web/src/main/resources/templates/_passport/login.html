@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="shortcut icon" th:href="@{/assets/img/common/icon.ico}" />
+<title th:inline="text"></title>
+<link th:href="@{/assets/css/signin.css}" rel="stylesheet" />
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="/assets/lib/html5shiv/r29/html5.min.js"></script>
+    <script src="/assets/lib/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+	<header class="header">
+		<span class="headerIntro">业务后台管理</span>
+	</header>
+
+	<!-- 代码 开始 -->
+	<section class="main">
+		<div class="slide" id="slide">
+			<div class="slideLoading">
+				<div class="slideLoading2">
+					<em>正在努力加载中</em>
+				</div>
+			</div>
+			<div class="slides"></div>
+			<div class="slideB">
+				<div class="slideBtns" id="slideBtns"></div>
+			</div>
+
+			<div class="content">
+				<div class="tab-1" id="login">
+
+					<div class="loginFunc">
+						<div id="lbNormal" class="loginFuncNormal"
+							onMouseOver="selectTab(1);document.getElementById('login').className='tab-1'">普通用户登录</div>
+						<!-- <div id="lbDynPw" class="loginFuncDynPw"
+							onMouseOver="selectTab(2);document.getElementById('login').className='tab-2'">二维码登录</div> -->
+					</div>
+
+					<!-- 正规登录tab -->
+					<div class="loginForm" id="loginForm">
+						<form id="loginForm" th:action="@{/passport/login}" method="post"
+							class="form-signin" role="form">
+							<div class="alert left alert-warning input-medium controls"
+								th:if="${shiroLoginFailure}">
+								<button class="close" type="button" data-dismiss="alert">×</button>
+								<span th:text="${shiroLoginFailure}">登录失败，请重试.</span>
+							</div>
+<!-- 							<div class="alert left alert-warning input-medium controls"
+								shiro:user="">
+								<button class="close" type="button" data-dismiss="alert">×</button>
+								您已经登录. <a th:href="@{/}">返回首页</a>
+							</div> -->
+
+							<div class="user" shiro:guest="">
+								<div class="loginFormIpt" id="loginFormUid">
+									<b class="ico ico-uid"></b><input type="text" id="username"
+										name="username" th:value="${username}" placeholder="登录名"
+										required="required" autofocus="autofocus" class="formIpt"
+										onFocus="document.getElementById('loginFormUid').className='loginFormIptOnFocus'"
+										onBlur="document.getElementById('loginFormUid').className='loginFormIpt'" />
+								</div>
+
+								<div class="loginFormIpt" id="loginFormPwd">
+									<b class="ico ico-pwd"></b> <input type="password"
+										id="password" name="password" placeholder="密码"
+										required="required" value="" class="formIpt"
+										onFocus="document.getElementById('loginFormPwd').className='loginFormIptOnFocus'"
+										onBlur="document.getElementById('loginFormPwd').className='loginFormIpt'" />
+								</div>
+
+								<div class="loginFormCheck">
+									<div class="loginFormCheckInner">
+										<input type="checkbox" id="rememberMe" name="rememberMe"
+											value="true" class="checkbox" /> <span>是否记住我</span>
+									</div>
+								</div>
+
+								<div class="loginFormBtn">
+									<button class="btn btn-main btn-login" type="submit">登&nbsp;&nbsp;录</button>
+									<button class="btn btn-side btn-res" type="reset">重&nbsp;&nbsp;置</button>
+								</div>
+
+							</div>
+							<div class="loginFormConf">
+								<div class="loginFormVer">当前系统版本: 默认版本</div>
+							</div>
+
+						</form>
+
+						<div class="ext">
+							<ul class="extText">
+								<li class="ext-1">用谷歌浏览器登录更安全更快捷！</li>
+								<li class="ext-2">更多精彩即将到来！</li>
+							</ul>
+						</div>
+					</div>
+					<!-- 正规登录结束 -->
+
+					<!-- 二维码登录 -->
+					<!-- 					<div class="loginQRCode" id="loginQRCode" style="display: none;">
+						<img th:src="@{/assets/img/login/QRCode.jpg}" alt="" width="280px"
+							height="280px" />
+						<div class="ext">
+							<ul class="extText">
+								<li class="ext-1">手机扫描二维码登录！</li>
+								<li class="ext-2">更安全更快捷！</li>
+							</ul>
+						</div>
+					</div> -->
+					<!-- 二维码登录结束 -->
+				</div>
+			</div>
+
+		</div>
+
+	</section>
+
+	<!-- 代码 结束 -->
+	<footer id="footer" class="footer">
+		<div class="footer-inner" id="footerInner">
+			<nav class="footerNav">Copyright © 2016 WANLUO All Rights
+				Reserved. 深圳市万罗软件科技有限公司 版权所有 粤ICP备15003723号</nav>
+		</div>
+	</footer>
+
+	<!-- /container -->
+	<script th:src="@{/assets/lib/jquery/1.11.1/jquery.min.js}"></script>
+	<script th:src="@{/assets/js/NB.js}"></script>
+	<script th:src="@{/assets/js/passport/login.js}"></script>
+	<script>
+		if (app.passport) {
+			app.passport.login.init();
+		} else if (window.location.href.match("/passport/login") == null) {
+			window.location.reload("/passport/login");
+		}
+	</script>
+</body>
+</html>

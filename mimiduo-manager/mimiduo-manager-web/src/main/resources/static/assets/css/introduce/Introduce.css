@@ -1,0 +1,125 @@
+@charset "utf-8";
+/* CSS Document */
+@font-face{
+	font-family:"DroidSansFallback";
+	src:url('../Instructions/DroidSansFallback.ttf') format('ttf');
+	font-weight:normal;
+	font-style:normal;
+	}
+*{
+    margin:0;
+    padding:0;
+    font-family:""
+    }
+body{
+    background-color:#f5f5f5;
+    }
+@media all and (max-width:480px) {
+.topbar{
+    height:44px;
+    background-color:#dab96b;
+    overflow:hidden;
+    }
+.title{
+    text-align:center;
+    height:44px;
+    line-height:44px;
+    font-size:22px;
+    color:#fff;
+    }
+.left{
+    float:left;
+    margin:9px 0 0 30px;
+    }
+.left img{
+    max-height:25px;
+    max-width:25px;
+    }
+.banner{
+    height:245px;
+    margin:30px 30px;
+    }
+.text{
+    margin:0 30px;
+    text-indent:24px;
+    color:#666;
+    }
+.list li{
+    margin:40px  30px;
+    list-style:none;
+    color:#666;
+    }
+}
+@media all and (min-width:480px) and (max-width:600px) {
+    .topbar{
+    height:44px;
+    background-color:#dab96b;
+    overflow:hidden;
+    }
+.title{
+    text-align:center;
+    height:44px;
+    line-height:44px;
+    font-size:22px;
+    color:#fff;
+    }
+.left{
+    float:left;
+    margin:9px 0 0 30px;
+    }
+.left img{
+    max-height:25px;
+    max-width:25px;
+    }
+.banner{
+    height:245px;
+    margin:30px 30px;
+    }
+.text{
+    margin:0 30px;
+    text-indent:24px;
+    color:#666;
+    }
+.list li{
+    margin:40px  30px;
+    list-style:none;
+    color:#666;
+    }
+    }
+@media all  and (min-width:600px) {
+    .topbar{
+    height:44px;
+    background-color:#dab96b;
+    overflow:hidden;
+    }
+.title{
+    text-align:center;
+    height:44px;
+    line-height:44px;
+    font-size:22px;
+    color:#fff;
+    }
+.left{
+    float:left;
+    margin:9px 0 0 30px;
+    }
+.left img{
+    max-height:25px;
+    max-width:25px;
+    }
+.banner{
+    text-align:center;
+    height:245px;
+    margin:30px 30px;
+    }
+.text{
+    margin:0 30px;
+    text-indent:24px;
+    color:#666;
+    }
+.list li{
+    margin:40px  30px;
+    list-style:none;
+    color:#666;
+    }
+    }

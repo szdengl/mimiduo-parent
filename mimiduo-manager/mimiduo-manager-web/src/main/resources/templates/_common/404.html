@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<link rel="shortcut icon" th:href="@{/assets/img/common/icon.ico}"/>
+<title th:inline="text">404页面 - [[${beans.appConfig.name}]]</title>
+<link rel="stylesheet" type="text/css" th:href="@{/assets/lib/easyui1.3.6/themes/default/easyui.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/assets/lib/easyui1.3.6/themes/icon.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/assets/css/admin/index.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/assets/css/common.css}" />
+</head>
+
+<body>
+  <div class="c_404">
+    <div class="error">
+      <span>糟糕！网页无法访问！</span>
+      <div class="clear"></div>
+      <p>
+        <a th:href="@{/}">返回首页</a>
+      </p>
+    </div>
+  </div>
+  <div class="Copyright">
+  
+  </div>
+</body>
+</html>

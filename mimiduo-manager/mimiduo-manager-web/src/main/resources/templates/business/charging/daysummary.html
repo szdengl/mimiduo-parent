@@ -1,0 +1,84 @@
+<div id="tabs" class="easyui-layout" data-options="fit:true"
+     style="width: auto; height: auto">
+        <table id="dg-day" title="通道当天统计" class="easyui-datagrid"
+               data-options="fit:true, remoteSort:true,onLoadSuccess:function(data){app.business.charging.onLoadSuccess()},onClickRow: app.business.charging.onClickRow"
+               style="width: auto; height: auto"
+               toolbar="#toolbar1" pagination="false" rownumbers="false"
+               fitColumns="true" singleSelect="true">
+            <thead>
+            <tr>
+                <th field="province" data-options="width:80,halign:'center'"
+                    >省份</th>
+                <th field="company" data-options="width:80,halign:'center'"
+                    >通道公司</th>
+                <th field="channelId" data-options="width:80,halign:'center'"
+                    >业务编号</th>
+                <th field="channelName" data-options="width:80,halign:'center'"
+                    >业务名称</th>
+                <th field="serviceType" data-options="width:80,halign:'center'"
+                    >业务类型</th>
+                <th field="price" data-options="width:80,halign:'center'"
+                    >价格</th>
+                <th field="orderId" data-options="width:80,halign:'center'"
+                    >排序编号</th>
+                <th field="sendnums" data-options="width:80,halign:'center'"
+                    >下发次数</th>
+                <th field="chargings" data-options="width:80,halign:'center'"
+                    >计费次数</th>
+                <th field="rate" data-options="width:80,halign:'center'" formatter="app.business.charging.formatRate"
+                    >转化率</th>
+            </tr>
+            </thead>
+        </table>
+        <div id="toolbar1" style="padding: 5px; height: auto">
+            <div>
+                <form id="privielges_search_form">
+                    <label>选择运营商:</label> <select class="easyui-combobox" name="f_operator" id="f_operator"
+                                                   style="width: 156px; height: 30px;"
+                                                   required="required"
+                                                   data-options="valueField:'id',textField:'name',editable:false, panelHeight:'auto'"
+                                                   th:attr="url=@{/admin/common/data/attributes/list?type=2}"></select>
+                    <a href="#" class="easyui-linkbutton"
+                                                     iconCls="icon-search" onclick="app.business.charging.onSearch()"
+                                                     style="margin-left: 10px;">查询</a>
+                </form>
+            </div>
+        </div>
+</div>
+<div id="dg-dlg" class="easyui-dialog"
+     style="width: 800px; height: 330px; padding: 0px 0px" closed="true"
+     data-options="resizable:true,modal:true">
+    <table id="select-dg" class="easyui-datagrid"
+           data-options="fit:true,border:false,onClickRow: app.business.charging.onClickEdit,onAfterEdit:app.business.charging.onAfterEdit,onDblClickRow:app.business.charging.onDblClickRow"
+           style="width: auto; height: auto"
+           th:attr="data-url=@{/admin/charging/data/channelList.json},data-save-url=@{/admin/channels/province/order}"
+           toolbar="#toolbar" pagination="true" rownumbers="true"
+           fitColumns="true" singleSelect="true">
+        <thead>
+        <tr>
+            <th field="province" data-options="width:80,halign:'center'">省份</th>
+            <th field="company" data-options="width:80,halign:'center'" >通道公司</th>
+            <th field="channelName" data-options="width:80,halign:'center'" >业务名称</th>
+            <th field="serviceType" data-options="width:80,halign:'center'" >业务类型</th>
+            <th field="price" data-options="width:80,halign:'center'" >价格</th>
+            <th field="orderId" data-options="width:80,halign:'center',editor:'text'" >排序编号</th>
+        </tr>
+        </thead>
+    </table>
+</div>
+<div id="toolbar" style="padding: 5px; height: auto">
+    <div style="margin-bottom: 5px">
+        <a href="javascript:void(0)" class="self-button easyui-linkbutton"
+           iconCls="icon-add" plain="true"
+           onclick="app.business.charging.editProvince()">编辑</a> <a
+            href="javascript:void(0)" class="self-button easyui-linkbutton"
+            iconCls="icon-edit" plain="true"
+            onclick="app.business.charging.saveProvince()">保存</a>
+    </div>
+</div>
+<script type="text/javascript"
+        th:src="@{/assets/lib/common/autoMergeCells.js}"></script>
+<script type="text/javascript" th:src="@{/assets/js/business/charging.js}"></script>
+<script>
+    app.business.charging.init();
+</script>

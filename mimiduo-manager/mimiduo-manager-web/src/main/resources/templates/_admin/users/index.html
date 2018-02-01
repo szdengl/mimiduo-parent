@@ -1,0 +1,280 @@
+<div id="easyui-layout-content" class="easyui-layout"
+	data-options="fit:true">
+
+	<!-- west panel -->
+	<div data-options="region:'west',split:true,border:false"
+		style="width: 200px;">
+		<div class="easyui-panel" title="组织机构" style="padding: 5px;"
+			data-options="fit:true">
+			<ul class="easyui-tree" id="user-organizations-tree"
+				data-options="animate:true, onSelect:  app.admin.users.onTreeSelect, loadFilter: app.admin.users.treeLoadFilter"
+				th:attr="url=@{/admin/organizations/data/organizationsList_nopage.json}"></ul>
+		</div>
+	</div>
+	<!-- end west -->
+
+	<!-- center panel -->
+	<div data-options="region:'center',border:false">
+		<div class="easyui-layout" data-options="fit:true">
+			<!--  north panel -->
+			<div data-options="region:'north',split:true,border:false"
+				style="height: 400px;">
+				<table id="user_dg" title="用户列表" class="easyui-datagrid"
+					data-options="fit:true, onLoadSuccess: app.admin.users.onLoadSuccess, onClickRow: app.admin.users.onClickRow,pageSize:25,pageList:[25,50,75,100,125]"
+					style="width: auto; height: auto"
+					th:attr="data-load-url=@{/admin/users/data/users.json},data-update-url=@{/admin/users/update},data-save-url=@{/admin/users},data-delete-url=@{/admin/users/delete}, data-change-status-url=@{/admin/users/change_status}, data-user-org-url=@{/admin/users/data/user/org.json},statusJSON=${statusJSON}, typesJSON=${typesJSON}"
+					toolbar="#userToolbar" pagination="true" rownumbers="true"
+					fitColumns="true" singleSelect="true">
+					<thead>
+						<tr>
+							<!-- <th field="id" data-options="width:80,halign:'center'">ID</th> -->
+							<th field="loginName" data-options="width:60,halign:'center'">登录名</th>
+							<th field="name" data-options="width:60,halign:'center'">姓名</th>
+							<th field="gender"
+								data-options="width:30,halign:'center',align:'center'">性别</th>
+							<th field="registerDate"
+								data-options="width:80,halign:'center',align:'center'">注册时间</th>
+							<th field="lastLoginTime"
+								data-options="width:80,halign:'center',align:'center'">最近登录时间</th>
+							<th field="status" formatter="app.admin.users.formatStatus"
+								data-options="width:40,halign:'center',align:'center'">状态</th>
+							<th field="id" formatter="app.admin.users.formatToolBtns"
+								data-options="width:80,halign:'center',align:'center'">#</th>
+						</tr>
+					</thead>
+				</table>
+				<div id="userToolbar">
+					<div style="padding: 5px;">
+						<shiro:hasPermission name="User:new">
+							<a href="javascript:void(0)"
+								class="self-button easyui-linkbutton" iconCls="icon-add"
+								plain="true" onclick="app.admin.users.newUser()">新增</a>
+						</shiro:hasPermission>
+						<shiro:hasPermission name="User:edit">
+							<a href="javascript:void(0)"
+								class="self-button easyui-linkbutton" iconCls="icon-edit"
+								plain="true" onclick="app.admin.users.editUser()">编辑</a>
+						</shiro:hasPermission>
+						<shiro:hasPermission name="User:changePwd">
+							<a href="javascript:void(0)"
+								class="self-button easyui-linkbutton" iconCls="icon-redo"
+								plain="true" onclick="app.admin.users.changePassword()">修改密码</a>
+						</shiro:hasPermission>
+						<shiro:hasPermission name="User:remove">
+							<a href="javascript:void(0)"
+								class="self-button easyui-linkbutton" iconCls="icon-remove"
+								plain="true" onclick="app.admin.users.destroyUser()">删除</a>
+						</shiro:hasPermission>
+						<a href="javascript:void(0)" class="self-button easyui-linkbutton"
+							iconCls="icon-reload" plain="true"
+							onclick="app.admin.users.refreshUsers()">刷新</a>
+					</div>
+				</div>
+
+				<div id="users-dlg" class="easyui-dialog"
+					style="width: 480px; height: 500px; padding: 10px 20px 0"
+					closed="true" buttons="#userDlg-buttons"
+					data-options="resizable:true,modal:true">
+					<form id="users-fm" method="post" novalidate="novalidate">
+						<div class="fitem">
+							<div class="newWindow">
+								<label>组织机构:</label> <select class="easyui-combotree" id="orgId"
+									name="orgId" style="width: 256px; height: 30px;"
+									data-options="loadFilter: app.admin.users.treeLoadFilterForSelect, panelHeight:'auto'"
+									th:attr="data-url=@{/admin/organizations/data/organizationsList_nopage.json}"></select>
+							</div>
+						</div>
+
+						<div class="fitem">
+							<div class="newWindow">
+								<div>
+									<label>登录名:</label> <input name="loginName"
+										class="easyui-validatebox" required="required"
+										validtype="account[2,25]" /> (唯一)
+								</div>
+							</div>
+						</div>
+
+						<div class="fitem" id="div-password">
+							<div class="newWindow">
+								<label>密码:</label> <input id="plainPassword"
+									name="plainPassword" class="easyui-validatebox"
+									required="required" validtype="length[6,30]"
+									invalidMessage="有效长度6-30,密码不能只用数字或者只用英文字符" />
+							</div>
+						</div>
+
+						<div class="fitem">
+							<div class="newWindow">
+								<label>姓名:</label> <input name="name" class="easyui-validatebox"
+									required="required" validtype="length[2,30]" />
+							</div>
+						</div>
+
+						<div class="fitem">
+							<div class="newWindow">
+								<label>性别:</label> <select class="easyui-combobox" name="gender"
+									style="width: 256px; height: 30px;" required="required"
+									data-options="panelHeight:'auto'">
+									<option value="男">男</option>
+									<option value="女">女</option>
+								</select>
+							</div>
+						</div>
+						<div class="fitem">
+							<div class="newWindow">
+								<label>状态:</label> <select class="easyui-combobox" name="status"
+									style="width: 256px; height: 30px;" required="required"
+									data-options="valueField:'value',textField:'text', editable:false, panelHeight:'auto'"
+									th:attr="url=@{/admin/users/data/status.json}"></select>
+							</div>
+						</div>
+
+					</form>
+				</div>
+				<div id="userDlg-buttons">
+					<a href="javascript:void(0)" class="easyui-linkbutton"
+						iconCls="icon-ok" onclick="app.admin.users.saveUser()">确定</a> <a
+						href="javascript:void(0)" class="easyui-linkbutton"
+						iconCls="icon-cancel"
+						onclick="javascript:$('#users-dlg').dialog('close')">取消</a>
+				</div>
+
+				<div id="users-change-password-dlg" class="easyui-dialog"
+					style="width: 450px; height: 180px; padding: 10px 20px"
+					closed="true" buttons="#change-password-dlg-buttons"
+					data-options="resizable:true,modal:true">
+					<form id="users-change-password-fm" method="post"
+						novalidate="novalidate"
+						th:action="@{/admin/users/change_password}">
+						<input type="hidden" name="id" />
+						<div class="fitem" id="div-password">
+							<div class="newWindow">
+								<label>新密码:</label> <input name="newPassword"
+									class="easyui-validatebox" required="required"
+									validtype="length[6,30]" invalidMessage="有效长度6-30" />
+							</div>
+						</div>
+					</form>
+				</div>
+				<div id="change-password-dlg-buttons">
+					<a href="javascript:void(0)" class="easyui-linkbutton"
+						iconCls="icon-ok" onclick="app.admin.users.doChangePassword()">确定</a>
+					<a href="javascript:void(0)" class="easyui-linkbutton"
+						iconCls="icon-cancel"
+						onclick="javascript:$('#users-change-password-dlg').dialog('close')">取消</a>
+				</div>
+			</div>
+			<!-- end north -->
+
+			<!--  center panel -->
+			<div data-options="region:'center',border:false">
+				<div id="user-panel-detail" class="easyui-panel" title="用户管理"
+					data-options="fit:true">
+					<div id="tabs" class="easyui-tabs" data-options="fit:true"
+						style="width: auto; height: auto">
+						<div title="分配直属角色" data-options="tools:'#p-tools',fit:true"
+							style="padding: 10px">
+							<table id="dg-user-roles" class="easyui-datagrid"
+								style="width: 800px;"
+								th:attr="data-url=@{/admin/users/data/user/roles.json},data-save-url=@{/admin/users/roles},data-delete-url=@{/admin/users/roles/delete}"
+								toolbar="#roles-toolbar" rownumbers="true" fitColumns="true"
+								singleSelect="true">
+								<thead>
+									<tr>
+										<th field="name" data-options="width:80,halign:'center'">名称</th>
+										<th field="realm" data-options="width:80,halign:'center'">领域</th>
+										<th field="description"
+											data-options="width:80,halign:'center'">说明</th>
+									</tr>
+								</thead>
+							</table>
+							<div id="roles-toolbar" style="padding: 5px; height: auto">
+								<div style="margin-bottom: 5px">
+									<shiro:hasPermission name="User:addRole">
+										<a href="javascript:void(0)"
+											class="self-button easyui-linkbutton" iconCls="icon-add"
+											plain="true" onclick="app.admin.users.toAddUserRole()">添加</a>
+									</shiro:hasPermission>
+									<shiro:hasPermission name="User:destroyRole">
+										<a href="javascript:void(0)"
+											class="self-button easyui-linkbutton" iconCls="icon-remove"
+											plain="true" onclick="app.admin.users.destroyUserRole()">移除</a>
+									</shiro:hasPermission>
+									<a href="javascript:void(0)"
+										class="self-button easyui-linkbutton" iconCls="icon-reload"
+										plain="true" onclick="app.admin.users.refreshUserRoles()">刷新</a>
+								</div>
+							</div>
+
+							<div id="user-roles-dlg" class="easyui-dialog"
+								style="width: 600px; height: 360px; padding: 0px 0px"
+								closed="true" buttons="#dlg-user-privileges-buttons"
+								data-options="resizable:true,modal:true">
+								<table id="roles-select-dg" class="easyui-datagrid"
+									data-options="fit:true,border:false"
+									style="width: auto; height: auto"
+									th:attr="data-load-url=@{/admin/users/data/roles_for_select.json}"
+									pagination="true" rownumbers="true" fitColumns="true"
+									singleSelect="true">
+									<thead>
+										<tr>
+											<th field="name" data-options="width:80,halign:'center'">名称</th>
+											<th field="realm" data-options="width:80,halign:'center'">领域</th>
+											<th field="description"
+												data-options="width:80,halign:'center'">说明</th>
+										</tr>
+									</thead>
+								</table>
+							</div>
+							<div id="dlg-user-privileges-buttons">
+								<a href="javascript:void(0)" class="easyui-linkbutton"
+									iconCls="icon-ok" onclick="app.admin.users.addUserRoles()">确定</a>
+								<a href="javascript:void(0)" class="easyui-linkbutton"
+									iconCls="icon-cancel"
+									onclick="javascript:$('#user-roles-dlg').dialog('close')">取消</a>
+							</div>
+						</div>
+						<div title="权限列表" style="padding: 10px">
+							<table id="user-privileges-dg" class="easyui-datagrid"
+								data-options="border:true" style="width: 800px; height: auto"
+								th:attr="url=@{/admin/users/data/user/privileges.json}"
+								rownumbers="true" fitColumns="true" singleSelect="true">
+								<thead>
+									<tr>
+										<th field="name" data-options="width:240,halign:'center'">名称</th>
+										<th field="type"
+											data-options="width:40,halign:'center', align:'center'"
+											formatter="app.admin.users.formatPrivilegesType">类型</th>
+										<th field="target" data-options="width:80,halign:'center'">资源对象</th>
+										<th field="method" data-options="width:80,halign:'center'">方法</th>
+										<th field="scope" data-options="width:80,halign:'center'"
+											sortable="true">数据范围</th>
+									</tr>
+								</thead>
+							</table>
+						</div>
+						<div title="角色权限树" data-options="tools:'#p-tools'"
+							style="padding: 10px">
+							<div class="easyui-panel" style="padding: 5px; width: 600px;">
+								<ul class="easyui-tree" id="user-roles-tree"
+									data-options="animate:true"
+									th:attr="data-url=@{/admin/users/data/user/all_privileges.json}"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- end center -->
+		</div>
+		<!-- end easyui-layout -->
+	</div>
+	<!-- end center -->
+</div>
+<!-- end easyui-layout -->
+
+<script type="text/javascript"
+	th:src="@{/assets/js/admin/system_manage.js}"></script>
+<script type="text/javascript">
+	app.admin.users.init();
+</script>

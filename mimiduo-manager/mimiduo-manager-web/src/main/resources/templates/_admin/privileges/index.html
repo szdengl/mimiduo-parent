@@ -1,0 +1,98 @@
+<table id="privilege_dg" title="权限列表" class="easyui-datagrid"
+  data-options="fit:true, onLoadSuccess: app.admin.privileges.onLoadSuccess, remoteSort:true,pageSize:25,pageList:[25,50,75,100,125]" style="width: auto; height: auto"
+  th:attr="data-load-url=@{/admin/privileges/data/privileges.json},data-update-url=@{/admin/privileges/update},data-save-url=@{/admin/privileges},data-delete-url=@{/admin/privileges/delete}, typesJSON=${typesJSON}"
+  toolbar="#privilegeToolbar" pagination="true" rownumbers="true" fitColumns="true" singleSelect="true">
+  <thead>
+    <tr>
+      <th field="name" data-options="width:80,halign:'center'" sortable="true">名称</th>
+      <th field="type" data-options="width:80,halign:'center'" sortable="true" formatter="app.admin.privileges.formatType">类型</th>
+      <th field="target" data-options="width:80,halign:'center'" sortable="true">资源对象</th>
+      <th field="method" data-options="width:80,halign:'center'" sortable="true">方法</th>
+      <th field="scope" data-options="width:80,halign:'center'" sortable="true">数据范围</th>
+      <th field="readOnly" formatter="app.admin.privileges.formatReadOnly"
+        data-options="width:80,halign:'center',align:'center'" sortable="true">只读</th>
+      <th field="isActived" formatter="app.formatters.activeFormatters"
+            data-options="width:80,halign:'center',align:'center'">是否有效</th>  
+    </tr>
+  </thead>
+</table>
+<div id="privilegeToolbar" style="padding: 5px; height: auto">
+  <div style="margin-bottom: 5px">
+  	<form id="privielges_search_form">
+
+      <label>名称:</label> 
+      <input type="text" id="f_key" name="f_key" style="width: 156px" /> 
+      <label>类型:</label> 
+      <select
+        class="easyui-combobox" id="f_type" name="f_type" panelHeight="auto" style="width: 156px" data-options="editable:false"
+        th:attr="url=@{/admin/privileges/data/types.json}">
+      </select> 
+      <a href="#" class="easyui-linkbutton" iconCls="icon-search" onclick="app.admin.privileges.onSearch()" style="margin-left: 10px;">查询</a>
+      <shiro:hasPermission name="Privilege:new">
+	      <a style="margin-left: 50px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-add" plain="true" onclick="app.admin.privileges.newPrivilege()">新增</a> 
+	  </shiro:hasPermission>
+	  <shiro:hasPermission name="Privilege:edit">
+	      <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="app.admin.privileges.editPrivilege()">编辑</a> 
+	  </shiro:hasPermission>
+	  <shiro:hasPermission name="Privilege:remove">
+	      <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.admin.privileges.destroyPrivilege()">删除</a> 
+      </shiro:hasPermission>
+      <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="app.admin.privileges.refreshPrivileges()">刷新</a>
+
+    </form>
+  </div>
+</div>
+
+<div id="privileges-dlg" class="easyui-dialog" style="width: 480px; height: 380px; padding: 10px 20px 0" closed="true"
+  buttons="#privilegeDlg-buttons" data-options="resizable:true,modal:true">
+  <form id="privileges-fm" method="post" novalidate="novalidate">
+    <div class="fitem">
+      <div class="newWindow">
+        <label>名称：</label> <input name="name" class="easyui-validatebox" required="required" validtype="length[1,100]"
+          invalidMessage="有效长度1-100" />
+      </div>
+    </div>
+    <div class="fitem">
+        <label>类型：</label> <input class="easyui-combobox" name="type" required="required"
+          data-options="valueField:'value', textField:'text', panelHeight:'auto', editable:false"
+          th:attr="url=@{/admin/privileges/data/types.json}" style="width: 256px; height: 30px;"/>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>资源对象：</label> <input name="target" class="easyui-validatebox" required="required" />
+      </div>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>方法：</label> <input id="method" name="method" th:attr="data-url=@{/admin/privileges/data/methods.json}" />
+        <br/><p style="color:#FF5E12;padding:0 82px 0 84px;">多个之间可使用","分割。常用方法： <span id="methodTip"></span></p>
+      </div>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>数据范围：</label> <input name="scope" />
+      </div>
+    </div>
+    <div class="fitem" style="display: none">
+      <div class="newWindow">
+        <label>只读：</label> <input type="checkbox" id="readOnly" name="readOnly" value="true" disabled="disabled" />
+      </div>
+    </div>
+    <div class="fitem">
+          <div class="newWindow">
+          	<label>是否有效:</label>
+            <input type= "checkbox" name="isActived" value="1" style="vertical-align: middle; margin-left: -110px;"></input>
+          </div>
+        </div>
+  </form>
+</div>
+<div id="privilegeDlg-buttons">
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok"
+    onclick="app.admin.privileges.savePrivilege()">确定</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+    iconCls="icon-cancel" onclick="javascript:$('#privileges-dlg').dialog('close')">取消</a>
+</div>
+
+<script type="text/javascript" th:src="@{/assets/js/admin/system_manage.js}"></script>
+<script>
+	app.admin.privileges.init();
+</script>

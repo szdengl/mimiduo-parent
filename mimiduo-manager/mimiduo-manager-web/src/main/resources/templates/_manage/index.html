@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title th:inline="text">系统监控 - [[${beans.appConfig.name}]]</title>
+<link rel="shortcut icon" th:href="@{/assets/img/common/icon.ico}" />
+<link rel="stylesheet" href="/webjars/bootstrap/3.2.0/css/bootstrap.min.css" />
+<link rel="stylesheet" href="/webjars/bootstrap/3.2.0/css/bootstrap-theme.min.css" />
+<link ref="stylesheet" href="/webjars/jquery-jsonview/0.2.0/jquery.jsonview.css" />
+
+<style type="text/css">
+table {
+  table-layout: fixed;
+  word-wrap: break-word;
+}
+</style>
+</head>
+<body>
+  <div class="container-fluid">
+    <h1>
+      系统监控 &nbsp;<small>服务器时间: <span id="server-time"></span></small>
+    </h1>
+
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+      <li class="active"><a href="#logs" role="tab" data-toggle="tab">logs</a></li>
+      <li><a href="#env" role="tab" data-toggle="tab">env</a></li>
+      <li><a href="#health" role="tab" data-toggle="tab">health</a></li>
+      <li><a href="#metrics" role="tab" data-toggle="tab">metrics</a></li>
+      <li><a href="#trace" role="tab" data-toggle="tab">trace</a></li>
+      <li><a href="#dump" role="tab" data-toggle="tab">dump</a></li>
+      <li><a href="#info" role="tab" data-toggle="tab">info</a></li>
+      <li><a href="#configprops" role="tab" data-toggle="tab">configprops</a></li>
+      <li><a href="#autoconfig" role="tab" data-toggle="tab">autoconfig</a></li>
+      <li><a href="#beans" role="tab" data-toggle="tab">beans</a></li>
+      <li><a href="#mappings" role="tab" data-toggle="tab">mappings</a></li>
+      <li><a href="#origins" role="tab" data-toggle="tab">原始的REST API</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+      <div class="tab-pane active" id="logs">
+        <form class="form-inline" role="form">
+          <div class="form-group">
+            <label for="log-lines">显示最新日志行数:</label><input type="text" id="log-lines"
+              class="form-control" value="20" />
+          </div>
+          <button type="button" id="btn-fresh-logs" class="btn btn-default">刷新</button>
+        </form>
+        <div>
+          <pre>
+          <code id="log-show" style="height:400px;"> </code>
+          </pre>
+        </div>
+      </div>
+      <div class="tab-pane" id="env">...</div>
+      <div class="tab-pane " id="beans"></div>
+      <div class="tab-pane" id="autoconfig"></div>
+      <div class="tab-pane" id="configprops">...</div>
+      <div class="tab-pane" id="dump">...</div>
+      <div class="tab-pane" id="health">...</div>
+      <div class="tab-pane" id="info">...</div>
+      <div class="tab-pane" id="metrics">...</div>
+      <div class="tab-pane" id="mappings">...</div>
+      <div class="tab-pane" id="trace">...</div>
+      <div class="tab-pane" id="origins">
+        <ul>
+          <li><a target="_blank" href="/manage/env">env</a></li>
+          <li><a target="_blank" href="/manage/health">health</a></li>
+          <li><a target="_blank" href="/manage/metrics">metrics</a></li>
+          <li><a target="_blank" href="/manage/trace">trace</a></li>
+          <li><a target="_blank" href="/manage/dump">dump</a></li>
+          <li><a target="_blank" href="/manage/info">info</a></li>
+          <li><a target="_blank" href="/manage/configprops">configprops</a></li>
+          <li><a target="_blank" href="/manage/autoconfig">autoconfig</a></li>
+          <li><a target="_blank" href="/manage/beans">beans</a></li>
+          <li><a target="_blank" href="/manage/mappings">mappings</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- jQuery -->
+  <script src="/assets/lib/jquery/1.11.1/jquery.min.js"></script>
+  <!-- jQuery rest -->
+  <script src="/assets/lib/jquery.rest.min.js"></script>
+  <script th:src="@{/assets/lib/lodash.js/2.4.1/lodash.compat.min.js}"></script>
+  <script type="text/javascript" src="/webjars/jquery-jsonview/0.2.0/jquery.jsonview.js"></script>
+  <script type="text/javascript" src="/webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  <script th:src="@{/assets/js/NB.js}"></script>
+  <script type="text/javascript" src="/assets/js/manage/manage.js"></script>
+  <script>
+            app.manage.init();
+        </script>
+</body>
+</html>
+

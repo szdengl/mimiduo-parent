@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title th:inline="text"></title>
+<link rel="stylesheet" type="text/css"
+	th:href="@{/assets/lib/easyui1.5.2/themes/default/easyui.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/assets/lib/easyui1.5.2/themes/icon.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/assets/css/admin/index.css}" />
+<link rel="stylesheet" type="text/css"
+	th:href="@{/assets/css/common.css}" />
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+    <script src="/assets/lib/html5shiv/r29/html5.min.js"></script>
+    <script src="/assets/lib/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body class="easyui-layout">
+	<div region="north" border="false" class="rtitle">
+		<div class="self-head">
+			<div class="operator">
+				<img th:src="@{/assets/img/frameImg/nav_pre.gif}" /> 欢迎 <span
+					th:text="${currentUserOrg} ? ${currentUserOrg.name} :''"> </span> [
+				<span th:text="${beans.NBS.currentUser.name}" class="landing"></span>
+				] 登陆系统
+			</div>
+			<div class="operate">
+				nav_changePassword
+				<!--  
+        <a href="javascript:history.go(-1);"><img th:src="@{/assets/img/frameImg/nav_back.png}" /></a>
+        <a href="javascript:history.go(1);"><img th:src="@{/assets/img/frameImg/nav_forward.png}" /></a>
+        <a href=""><img th:src="@{/assets/img/frameImg/nav_changePassword.png}" /></a> 
+       -->
+				<a href="javascript:app.admin.index.showTabByText('修改密码');"><img
+					th:src="@{/assets/img/frameImg/nav_resetPassword.png}" /></a> <img
+					th:src="@{/assets/img/frameImg/menu_seprator.gif}" /> <a
+					th:href="@{/}"> <img
+					th:src="@{/assets/img/frameImg/nav_back.png}" />
+				</a> <img th:src="@{/assets/img/frameImg/menu_seprator.gif}" /> <a
+					shiro:user="" th:href="@{/passport/logout}"><img
+					th:src="@{/assets/img/frameImg/nav_changePassword.png}" /> </a>
+			</div>
+		</div>
+	</div>
+	<div region="south" border="false" class="rtitle"
+		style="height: 20px; font: 12px/1.5 tahoma, arial; text-align: center;">
+		&nbsp;</div>
+	<div region="west" title="导航菜单" split="true" border="false"
+		style="width: 200px; background: #EAFDFF;">
+		<ul id="t-channels" th:attr="url=@{/admin/data/channels.json}"></ul>
+	</div>
+	<div region="center" border="false">
+		<div class="easyui-layout" fit="true">
+			<div region="center" border="false" style="overflow: hidden">
+				<div id="tabs" class="easyui-tabs" data-options="fit:true"
+					style="width: auto; height: auto">
+					<div title="欢迎使用" data-options="tools:'#p-tools'"
+						style="padding: 10px">
+						<p style="font-size: 14px">我的工作台</p>
+						<ul>
+							<li>待办事项. (<a href="#">0</a>)
+							</li>
+							<li>最新消息. (<a href="#">0</a>)
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="p-tools">
+					<a href="javascript:void(0)" class="icon-mini-refresh" onclick=""></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script th:src="@{/assets/lib/jquery/1.11.1/jquery.min.js}"></script>
+	<script th:src="@{/assets/lib/lodash.js/2.4.1/lodash.compat.min.js}"></script>
+	<script th:src="@{/assets/lib/json2/20130526/json2.min.js}"></script>
+	<script th:src="@{/assets/lib/easyui1.5.2/jquery.easyui.min.js}"></script>
+	<script th:src="@{/assets/lib/easyui1.5.2/locale/easyui-lang-zh_CN.js}"></script>
+	<script th:src="@{/assets/js/NB.js}"></script>
+	<script th:src="@{/assets/js/common/common.js}"></script>
+	<script th:src="@{/assets/js/admin/index.js}"></script>
+	<script th:attr="data-chkpwd_url=@{/admin/check_should_change_password}"
+		id="jshold-index">
+		app.admin.index.init();
+	</script>
+</body>
+</html>

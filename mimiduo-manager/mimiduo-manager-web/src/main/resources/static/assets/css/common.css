@@ -1,0 +1,328 @@
+.ftitle {
+  font-size: 14px;
+  font-weight: bold;
+  padding: 5px 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.fitem {
+  margin-bottom: 5px;
+}
+
+.redstar{
+    color: red;
+    padding-left:2px;
+}
+
+.fitem label {
+  align: middle;
+  display: inline-block;
+  width:120px;
+  text-align: right;
+  vertical-align: middle;
+}
+
+.datagrid-toolbar, .datagrid-pager {
+  background-color: rgb(234, 253, 255);
+}
+/*查询条*/
+.datagrid-toolbar{
+  background-color: rgb(237, 253, 255);
+}
+/*表格*/
+.datagrid-header{
+  background:-webkit-linear-gradient(top,#FFFFFF 0,#D3DADD 100%);
+}
+
+.datagrid-header{
+border-color: #FFFFFF;
+}
+
+.datagrid-toolbar{
+  border-color:#FFFFFF;
+}
+
+/*tab背景色*/
+.tabs-header, .tabs-tool {
+  background-color: #E0ECFF;
+  background: linear-gradient(to bottom,#EFF5FF 0,#E0ECFF 100%);
+  background-repeat: repeat-x;
+}
+
+/*.l-btn-text{
+  text-shadow: 1px 2px 5px #9FB3CC;
+}*/
+
+.dialog-content {
+  background-color: #EDFAFF;
+}
+
+.datagrid-row-selected {
+  background: #D8D8D8;
+}
+
+.tree-node-selected {
+  background: #D8D8D8;
+}
+
+.self-button{
+  padding: 0px;
+  border: 1px solid #bbb;
+  background: linear-gradient(to bottom,#ffffff 0,#eeeeee 100%);
+  background-repeat: repeat-x;
+
+}
+
+.icon-gears {
+  background: url('../../img/gears.png') no-repeat;
+}
+
+.dialog-button {
+  text-align: center;
+}
+
+/****************************系统菜单图标*************************************/
+
+.tree-folder {
+    background: url('../../assets/img/icons/fload.png') no-repeat transparent;
+}
+
+.tree-folder-open {
+  background: url('../../assets/img/icons/fload-open.png') no-repeat transparent;
+}
+
+.tree-file {
+  background: url('../../assets/img/icons/file.png') no-repeat;
+}
+
+.icon-window {
+  background: url('../../assets/img/icons/window.png') no-repeat;
+}
+
+.icon-school {
+  background: url('../../assets/img/icons/school.png') no-repeat;
+}
+
+.icon-student {
+  background: url('../../assets/img/icons/student.png') no-repeat;
+}
+
+.icon-base{
+  background: url('../../assets/img/icons/base.png') no-repeat;
+}
+
+.icon-enrollment{
+  background: url('../../assets/img/icons/enrollment.png') no-repeat;
+}
+.icon-document {
+  background: url('../../assets/img/icons/document.png') no-repeat;
+}
+
+.icon-payment{
+  background: url('../../assets/img/icons/payment.png') no-repeat;
+}
+.icon-system{
+  background: url('../../assets/img/icons/system.png') no-repeat; 
+}
+
+.icon-user{
+  background: url('../../assets/img/icons/users.png') no-repeat; 
+}
+
+.icon-role{
+  background: url('../../assets/img/icons/role.png') no-repeat; 
+}
+
+.icon-privileges{
+  background: url('../../assets/img/icons/privileges.png') no-repeat;
+}
+
+.icon-organizations{
+  background: url('../../assets/img/icons/organizations.png') no-repeat;
+}
+
+.icon-menus{
+  background: url('../../assets/img/icons/menu.png') no-repeat;
+}
+
+.icon-mytask{
+  background: url('../../assets/img/icons/mytask.png') no-repeat;
+}
+
+.icon-accountNo{
+  background: url('../../assets/img/icons/accountNo.png') no-repeat;
+}
+
+.icon-security{
+  background: url('../../assets/img/icons/security.png') no-repeat;
+}
+
+/*******************************系统操作按钮图标*******************************************/
+
+.icon-add{
+  background:url('../../assets/img/icons/add.png') no-repeat center;
+}
+
+.icon-assign{
+  background: url('../../assets/img/icons/assign.png') no-repeat center;
+}
+
+.icon-edit{
+  background:url('../../assets/img/icons/pencil.png') no-repeat center;
+}
+
+.icon-remove{
+  background:url('../../assets/img/icons/remove.png') no-repeat center;
+}
+
+.icon-self-assign{
+  background: url('../../assets/img/icons/to_obtain.png') no-repeat center;
+}
+
+.icon-come{
+  background: url('../../assets/img/icons/come.png') no-repeat center;
+}
+
+.icon-visit{
+  background: url('../../assets/img/icons/visit.png') no-repeat center;
+}
+
+.icon-reload{
+  background: url('../../assets/img/icons/reload.png') no-repeat center;
+}
+
+.icon-money{
+  background: url('../../assets/img/icons/money.png') no-repeat center;
+}
+
+.icon-underway{
+  background: url('../../assets/img/icons/underway.png') no-repeat center;
+}
+
+.icon-summarize{
+  background: url('../../assets/img/icons/summarize.png') no-repeat center;
+}
+
+.icon-confirm{
+  background: url('../../assets/img/icons/confirm.png') no-repeat center;
+}
+
+.icon-college{
+  background: url('../../assets/img/icons/college.png') no-repeat center;
+}
+
+.icon-enrol{
+  background: url('../../assets/img/icons/enrol.png') no-repeat center;
+}
+
+.icon-search{
+  background: url('../../assets/img/icons/search.png') no-repeat center;
+}
+
+.icon-redo{
+  background: url('../../assets/img/icons/redo.png') no-repeat center;
+}
+
+.icon-ok{
+  background: url('../../assets/img/icons/ok.png') no-repeat center;
+}
+
+.icon-cancel{
+  background: url('../../assets/img/icons/cancel.png') no-repeat center;
+}
+
+.icon-cancel1{
+  background: url('../../assets/img/icons/cancel1.png') no-repeat center;
+}
+
+.icon-save{
+  background: url('../../assets/img/icons/save.png') no-repeat center;
+}
+
+.icon-followUp{
+  background: url('../../assets/img/icons/follow_up.png') no-repeat center;
+}
+
+.icon-invalid{
+  background: url('../../assets/img/icons/invalid.png') no-repeat center;
+}
+
+.icon-library{
+  background: url('../../assets/img/icons/library.png') no-repeat center;
+}
+
+.icon-toObtain{
+  background: url('../../assets/img/icons/to_obtain.png') no-repeat center;
+}
+
+.validatebox-invalid {
+  background: url('../../assets/img/icons/validatebox_warning.png') no-repeat right center;
+}
+
+.datebox .combo-arrow {
+  background-image: url('../../assets/img/icons/datebox_arrow.png');
+  background-position: center center;
+  border: 0;
+  background-color: #FFFFFF;
+}
+
+.combo-arrow {
+  border-left: 1px solid #95b8e7;
+}
+
+.icon-no {
+  background: url('../../assets/img/icons/cancel.png') no-repeat center;
+}
+
+.icon-advanced-search{
+  background: url('../../assets/img/icons/advanced_search.png') no-repeat center;
+}
+.icon-jianyi{
+	background: url('../../assets/img/icons/jianyi.png') no-repeat center;
+}
+.icon-userrenwu{
+	background: url('../../assets/img/icons/userrenwu.png') no-repeat center;
+}
+.icon-shenqing{
+	background: url('../../assets/img/icons/shenqing.png') no-repeat center;
+}
+.icon-peizhi{
+	background: url('../../assets/img/icons/peizhi.png') no-repeat center;
+}
+.icon-jifen{
+	background: url('../../assets/img/icons/jifen.png') no-repeat center;
+}
+.icon-zidian{
+	background: url('../../assets/img/icons/zidian.png') no-repeat center;
+}	
+.icon-leixing{
+	background: url('../../assets/img/icons/leixing.png') no-repeat center;
+}
+.icon-feiyong{
+	background: url('../../assets/img/icons/feiyong.png') no-repeat center;
+}
+.icon-jianzhu{
+	background: url('../../assets/img/icons/jianzhu.png') no-repeat center;
+}
+.icon-qudao{
+	background: url('../../assets/img/icons/qudao.png') no-repeat center;
+}
+.icon-zhushou{
+	background: url('../../assets/img/icons/zhushou.png') no-repeat center;
+}
+.icon-yingzifuwu{
+	background: url('../../assets/img/icons/yingzifuwu.png') no-repeat center;
+}
+.icon-biaoqian{
+	background: url('../../assets/img/icons/biaoqian.png') no-repeat center;
+}
+.icon-jilu{
+	background: url('../../assets/img/icons/jilu.png') no-repeat center;
+}
+.icon-xiangqing{
+	background: url('../../assets/img/icons/xiangqing.png') no-repeat center;
+}
+.icon-guanli{
+	background: url('../../assets/img/icons/guanli.png') no-repeat center;
+}

@@ -1,0 +1,100 @@
+<table id="projectdg" title="项目列表" class="easyui-datagrid"
+	data-options="fit:true, remoteSort:true,pageSize:100,pageList:[100,125],"
+	style="width: auto; height: auto"
+	th:attr="url=@{/admin/projects/data/list},data-save-url=@{/admin/projects/add},data-update-url=@{/admin/projects/update},data-delete-url=@{/admin/projects/delete},statusJSON=${statusJSON},clientJSON=${clientJSON}"
+	toolbar="#toolbar" pagination="true" rownumbers="true"
+	fitColumns="true" singleSelect="true">
+	<thead>
+		<tr>
+			<th field="code" data-options="width:80,halign:'center'"
+				sortable="true">项目编号</th>
+			<th field="name" data-options="width:80,halign:'center'"
+				sortable="true">项目名称</th>
+			<th field="limitCost" data-options="width:80,halign:'center'"
+				sortable="true">计费限制</th>
+			<th field="separate" data-options="width:80,halign:'center'"
+				sortable="true">分成比例</th>
+			<th field="createdDate" data-options="width:80,halign:'center'"
+				sortable="true">加入时间</th>
+			<th field="isstatus" formatter="app.business.project.formatStatus"
+				data-options="width:80,halign:'center'" sortable="true">目前状态</th>
+				<th field="id" formatter="app.business.project.formatToolBtns"
+						data-options="width:120,halign:'center',align:'center'">操作</th>
+		</tr>
+	</thead>
+</table>
+<div id="toolbar" style="padding: 5px; height: auto">
+	<div>
+		<form id="privielges_search_form">
+			<label>选择客户:</label> <select class="easyui-combobox" id="f_client_id"
+				name="f_client_id" panelHeight="auto" style="width: 156px"
+				data-options="valueField:'id',textField:'name', editable:false, panelHeight:'auto',onChange:function(Data){app.business.project.onSearch()}"
+				></select>
+			<label>名称:</label> <input type="text" id="f_name" name="f_name"
+				style="width: 156px" /> <a href="#" class="easyui-linkbutton"
+				iconCls="icon-search" onclick="app.business.project.onSearch()"
+				style="margin-left: 10px;">查询</a>   <a href="javascript:void(0)" class="self-button easyui-linkbutton"
+			iconCls="icon-add" plain="true"
+			onclick="app.business.project.newProject()">新增</a>    <a
+			href="javascript:void(0)" class="self-button easyui-linkbutton"
+			iconCls="icon-reload" plain="true"
+			onclick="app.business.project.refreshProject()">刷新</a>
+		</form>
+	</div>
+</div>
+
+<div id="projects-dlg" class="easyui-dialog"
+	style="width: 480px; height: 350px; padding: 10px 20px 0" closed="true"
+	buttons="#dlg-buttons" data-options="resizable:true,modal:true">
+	<form id="projects-fm" method="post" novalidate="novalidate">
+		<input name="clientId" id="clientId" type="hidden" />
+		<div class="fitem">
+			<div class="newWindow">
+				<label>项目编码：</label> <input name="code" class="easyui-validatebox"
+					required="required" validtype="length[2,30]"
+					invalidMessage="只有两位到五位数字字母" />(唯一的字符编码)
+			</div>
+		</div>
+		<div class="fitem">
+			<div class="newWindow">
+				<label>项目名称：</label> <input name="name" class="easyui-validatebox"
+					required="required" validtype="length[1,10]"
+					invalidMessage="有效长度1-10" />
+			</div>
+		</div>
+		<div class="fitem">
+			<div class="newWindow">
+				<label>计费限制：</label> <input name="limitCost"
+					class="easyui-validatebox" required="required"
+					validtype="length[0,10]" invalidMessage="有效长度1-10" />(单位：分)
+			</div>
+		</div>
+		<div class="fitem">
+			<div class="newWindow">
+				<label>分成比例：</label> <input name="separate"
+					class="easyui-validatebox" required="required"
+					validtype="length[1,5]" invalidMessage="有效长度1-5" />(%)
+			</div>
+		</div>
+		<div class="fitem">
+			<div class="newWindow">
+				<label>状态：</label> <select class="easyui-combobox" name="isstatus"
+					style="width: 156px; height: 30px;" required="required"
+					data-options="valueField:'value',textField:'text', editable:false, panelHeight:'auto'"
+					th:attr="url=@{/admin/users/data/status.json}"></select>
+			</div>
+		</div>
+	</form>
+</div>
+<div id="dlg-buttons">
+	<a href="javascript:void(0)" class="easyui-linkbutton"
+		iconCls="icon-ok" onclick="app.business.project.saveProject()">确定</a> <a
+		href="javascript:void(0)" class="easyui-linkbutton"
+		iconCls="icon-cancel"
+		onclick="javascript:$('#projects-dlg').dialog('close')">取消</a>
+</div>
+
+<script type="text/javascript" th:src="@{/assets/js/business/project.js}"></script>
+<script>
+	app.business.project.init();
+</script>

@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="mimiduo-manager-web:war">
+    <output-path>$PROJECT_DIR$/mimiduo-manager/mimiduo-manager-web/target</output-path>
+    <root id="archive" name="mimiduo-manager-web.war">
+      <element id="artifact" artifact-name="mimiduo-manager-web:war exploded" />
+    </root>
+  </artifact>
+</component>

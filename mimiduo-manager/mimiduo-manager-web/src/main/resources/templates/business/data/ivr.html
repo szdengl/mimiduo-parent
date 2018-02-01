@@ -1,0 +1,48 @@
+<table id="dg" title="IVR同步记录查询" class="easyui-datagrid"
+	data-options="fit:true, remoteSort:true,sortName:'createtime',sortOrder:'desc'"
+	style="width: auto; height: auto"
+	th:attr="url=@{/admin/ivr/data/query1.json}," toolbar="#toolbar"
+	pagination="true" rownumbers="false" fitColumns="true"
+	singleSelect="false">
+	<thead>
+		<tr>
+			<th field="mobile" data-options="width:80,halign:'center'"
+				sortable="true">手机号码</th>
+			<th field="spnumber" data-options="width:80,halign:'center'"
+				sortable="true">目標</th>
+			<th field="starTime" data-options="width:80,halign:'center'"
+				sortable="true">开始时间</th>
+			<th field="endTime" data-options="width:80,halign:'center'"
+				sortable="true">结束时间</th>
+			<th field="diff" data-options="width:80,halign:'center'"
+				sortable="true">时间差</th>
+			<th field="linkId" data-options="width:80,halign:'center'"
+				sortable="true">LINKID</th>
+			<th field="createtime" data-options="width:80,halign:'center'"
+				sortable="true">同步时间</th>
+		</tr>
+	</thead>
+</table>
+<div id="toolbar" style="padding: 5px; height: auto">
+	<div>
+		<form id="privielges_search_form">
+			<label>开始时间:</label><input type="text" class="easyui-datebox"
+				id="f_star" name="f_star" style="width: 100px" /> <label>终止时间:</label>
+			<input type="text" class="easyui-datebox" id="f_end" name="f_end"
+				style="width: 100px" /> <label>通道:</label> <select
+				class="easyui-combobox" id="f_company_id" name="f_company_id"
+				panelHeight="auto" style="width: 156px"
+				data-options="valueField:'id',textField:'name', editable:false, panelHeight:'auto'"
+				th:attr="url=@{/admin/companys/data/companys_select_status.json}"></select>
+			<label>手机号码:</label> <input type="text" id="f_mobile" name="f_mobile"
+				style="width: 100px" /><a href="#" class="easyui-linkbutton"
+				iconCls="icon-search" onclick="app.admin.ivr.onSearch()"
+				style="margin-left: 10px;">查询</a>
+		</form>
+	</div>
+</div>
+
+<script type="text/javascript" th:src="@{/assets/js/admin/ivr.js}"></script>
+<script>
+	app.admin.ivr.init();
+</script>

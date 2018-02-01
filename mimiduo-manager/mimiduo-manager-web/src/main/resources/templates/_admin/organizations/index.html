@@ -1,0 +1,91 @@
+<table id="organization_dg" title="组织机构树" class="easyui-treegrid"
+  data-options="fit:true, onLoadSuccess: app.admin.organizations.onLoadSuccess,idField: 'id',treeField: 'name',pageSize:25,pageList:[25,50,75,100,125]"
+  style="width: auto; height: auto"
+  th:attr="data-load-url=@{/admin/organizations/data/organizations.json},data-update-url=@{/admin/organizations/update},data-save-url=@{/admin/organizations},data-delete-url=@{/admin/organizations/delete},orgsJSON=${orgsJSON}"
+  toolbar="#organizationToolbar" pagination="true" fitColumns="true" singleSelect="true">
+  <thead>
+    <tr>
+      <th field="name" data-options="width:80,halign:'center'">名称</th>
+      <th field="contactUser" data-options="width:60,halign:'center'">联系人</th>
+      <th field="contactPhone" data-options="width:60,halign:'center'">联系电话</th>
+      <th field="description" data-options="width:80,halign:'center'">描述</th>
+      <th field="createdDate" data-options="width:80,halign:'center',align:'center'">创建时间</th>
+      <th field="createdBy" formatter="app.formatters.userName" data-options="width:80,halign:'center',align:'center'">创建人</th>
+      <th field="isActived" formatter="app.formatters.activeFormatters"
+            data-options="width:80,halign:'center',align:'center'">是否有效</th>  
+    </tr>
+  </thead>
+</table>
+<div id="organizationToolbar" style="padding: 5px; height: auto">
+  <div style="margin-bottom: 5px">
+        <form id="organizations_search_form">
+	      <label>名称:</label> <input type="text" id="f_name" name="f_name" style="width: 156px" /> <a href="#"
+	        class="easyui-linkbutton" iconCls="icon-search" onclick="app.admin.organizations.onSearch()"
+	        style="margin: -3px 0 0 10px;">查询</a>
+	      <shiro:hasPermission name="Organization:new">
+		      <a style="margin-left: 50px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-add" plain="true" onclick="app.admin.organizations.newOrganization()">新增</a> 
+		  </shiro:hasPermission>
+		  <shiro:hasPermission name="Organization:edit">
+			  <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="app.admin.organizations.editOrganization()">编辑</a> 
+		  </shiro:hasPermission>
+		  <shiro:hasPermission name="Organization:remove">
+		      <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="app.admin.organizations.destroyOrganization()">删除</a> 
+	      </shiro:hasPermission>
+	      <a style="margin-left: 10px;" href="javascript:void(0)" class="self-button easyui-linkbutton" iconCls="icon-reload" plain="true" onclick="app.admin.organizations.refresh()">刷新</a>
+	  
+	    </form>
+     </div>
+
+</div>
+
+<div id="organizations-dlg" class="easyui-dialog" style="width: 480px; height: 390px; padding: 10px 20px" closed="true"
+  buttons="#organizationDlg-buttons" data-options="resizable:true,modal:true">
+  <form id="organizations-fm" method="post" novalidate="novalidate">
+    <div class="fitem">
+      <div class="newWindow">
+        <label>名称:</label> <input name="name" class="easyui-validatebox" required="required" validtype="length[0,30]"
+          invalidMessage="有效长度0-30" />
+      </div>
+    </div>
+    <div class="fitem">
+      <label>上一级机构:</label> <input class="easyui-combotree" id="org_parent_id" name="parent.id" value=""
+        data-options="loadFilter: app.admin.organizations.combotreeLoadFilter, panelHeight:'auto'"
+        th:attr="data-load-url=@{/admin/organizations/data/organizations_nopage.json},data-list-url=@{/admin/organizations/data/organizationsList_nopage.json}"
+        style="width: 256px; height: 30px;" />
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>联系人:</label> <input name="contactUser" class="easyui-validatebox" validtype="length[0,50]"
+          invalidMessage="有效长度0-50" />
+      </div>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>联系人电话:</label> <input name="contactPhone" class="easyui-validatebox" validtype="length[0,50]"
+          invalidMessage="有效长度0-50" />
+      </div>
+    </div>
+    <div class="fitem">
+      <div class="newWindow">
+        <label>描述:</label>
+        <textarea name="description" validtype="length[0,200]" invalidMessage="有效长度0-200"></textarea>
+      </div>
+    </div>
+     <div class="fitem">
+          <div class="newWindow">
+          	<label>是否有效:</label>
+            <input type= "checkbox" name="isActived" value="1" style="vertical-align: middle; margin-left: -110px;"></input>
+          </div>
+        </div>
+  </form>
+</div>
+<div id="organizationDlg-buttons">
+  <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok"
+    onclick="app.admin.organizations.saveOrganization()">确定</a> <a href="javascript:void(0)" class="easyui-linkbutton"
+    iconCls="icon-cancel" onclick="javascript:$('#organizations-dlg').dialog('close')">取消</a>
+</div>
+
+<script type="text/javascript" th:src="@{/assets/js/admin/system_manage.js}"></script>
+<script type="text/javascript">
+    app.admin.organizations.init();
+</script>
