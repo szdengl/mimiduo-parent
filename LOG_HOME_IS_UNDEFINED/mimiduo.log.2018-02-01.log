@@ -330,3 +330,117 @@ Action:
 
 Consider defining a bean of type 'reactor.core.Reactor' in your configuration.
 
+2018-02-01 12:42:17.587 [main] INFO  net.mimiduo.boot.ManagerApplication -
+				Starting ManagerApplication on DESKTOP-5U3F3G2 with PID 17300 (D:\work\intellij\mimiduo-parent\mimiduo-manager\mimiduo-manager-web\target\classes started by Administrator in D:\work\intellij\mimiduo-parent)
+2018-02-01 12:42:17.590 [main] DEBUG net.mimiduo.boot.ManagerApplication -
+				Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2018-02-01 12:42:17.591 [main] INFO  net.mimiduo.boot.ManagerApplication -
+				The following profiles are active: dev
+2018-02-01 12:42:17.948 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@60d8c9b7: startup date [Thu Feb 01 12:42:17 CST 2018]; root of context hierarchy
+2018-02-01 12:42:18.418 [background-preinit] INFO  org.hibernate.validator.internal.util.Version -
+				HV000001: Hibernate Validator 5.3.6.Final
+2018-02-01 12:42:19.545 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -
+				Bean 'shiroConfiguration.DefaultShiroConfiguration' of type [net.mimiduo.boot.configuration.ShiroConfiguration$DefaultShiroConfiguration$$EnhancerBySpringCGLIB$$2c091b19] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-02-01 12:42:20.285 [main] INFO  o.s.b.c.e.tomcat.TomcatEmbeddedServletContainer -
+				Tomcat initialized with port(s): 8083 (http)
+2018-02-01 12:42:20.301 [main] INFO  org.apache.catalina.core.StandardService -
+				Starting service [Tomcat]
+2018-02-01 12:42:20.301 [main] INFO  org.apache.catalina.core.StandardEngine -
+				Starting Servlet Engine: Apache Tomcat/8.5.23
+2018-02-01 12:42:20.400 [localhost-startStop-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] -
+				Initializing Spring embedded WebApplicationContext
+2018-02-01 12:42:20.400 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader -
+				Root WebApplicationContext: initialization completed in 2452 ms
+2018-02-01 12:42:20.468 [localhost-startStop-1] INFO  net.mimiduo.boot.configuration.WebappConfiguration -
+				multipart.max-file-size: 10MB, multipart.max-file-size: 10MB
+2018-02-01 12:42:22.369 [localhost-startStop-1] INFO  com.alibaba.druid.pool.DruidDataSource -
+				{dataSource-1} inited
+2018-02-01 12:42:22.469 [localhost-startStop-1] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean -
+				Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-02-01 12:42:22.499 [localhost-startStop-1] INFO  org.hibernate.jpa.internal.util.LogHelper -
+				HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-02-01 12:42:22.573 [localhost-startStop-1] INFO  org.hibernate.Version -
+				HHH000412: Hibernate Core {5.0.12.Final}
+2018-02-01 12:42:22.575 [localhost-startStop-1] INFO  org.hibernate.cfg.Environment -
+				HHH000206: hibernate.properties not found
+2018-02-01 12:42:22.577 [localhost-startStop-1] INFO  org.hibernate.cfg.Environment -
+				HHH000021: Bytecode provider name : javassist
+2018-02-01 12:42:22.621 [localhost-startStop-1] INFO  org.hibernate.annotations.common.Version -
+				HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-02-01 12:42:22.790 [localhost-startStop-1] INFO  org.hibernate.dialect.Dialect -
+				HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-02-01 12:42:23.720 [localhost-startStop-1] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean -
+				Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-02-01 12:42:24.379 [localhost-startStop-1] INFO  o.h.hql.internal.QueryTranslatorFactoryInitiator -
+				HHH000397: Using ASTQueryTranslatorFactory
+2018-02-01 12:42:24.813 [localhost-startStop-1] INFO  org.apache.shiro.realm.AuthorizingRealm -
+				No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2018-02-01 12:42:24.813 [localhost-startStop-1] INFO  net.mimiduo.boot.service.impl.admin.ShiroDbRealm -
+				initCredentialsMatcher
+2018-02-01 12:42:24.917 [localhost-startStop-1] INFO  org.apache.shiro.cache.ehcache.EhCacheManager -
+				Cache with name 'net.mimiduo.boot.service.impl.admin.ShiroDbRealm.authorizationCache' does not yet exist.  Creating now.
+2018-02-01 12:42:25.089 [localhost-startStop-1] INFO  org.apache.shiro.cache.ehcache.EhCacheManager -
+				Added EhCache named [net.mimiduo.boot.service.impl.admin.ShiroDbRealm.authorizationCache]
+2018-02-01 12:42:25.119 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				load classpath:/conf/acl.properties
+2018-02-01 12:42:25.139 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/admin/**=roles[管理员]
+2018-02-01 12:42:25.140 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/appUpload/**=anon
+2018-02-01 12:42:25.140 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/introduce/**=anon
+2018-02-01 12:42:25.140 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/sms/**=anon
+2018-02-01 12:42:25.140 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/app/**=anon
+2018-02-01 12:42:25.140 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/api/**=anon
+2018-02-01 12:42:25.140 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/api/**=anon
+2018-02-01 12:42:25.219 [localhost-startStop-1] INFO  o.s.boot.web.servlet.ServletRegistrationBean -
+				Mapping servlet: 'statViewServlet' to [/druid/*]
+2018-02-01 12:42:25.221 [localhost-startStop-1] INFO  o.s.boot.web.servlet.ServletRegistrationBean -
+				Mapping servlet: 'dispatcherServlet' to [/]
+2018-02-01 12:42:25.224 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-02-01 12:42:25.225 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-02-01 12:42:25.225 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-02-01 12:42:25.225 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'requestContextFilter' to: [/*]
+2018-02-01 12:42:25.225 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'webStatFilter' to: [/*]
+2018-02-01 12:42:25.226 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'shiroFilter' to: [/*]
+2018-02-01 12:42:25.290 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'accountController': Unsatisfied dependency expressed through field 'reactor'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'reactor.core.Reactor' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-02-01 12:42:25.296 [main] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean -
+				Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-02-01 12:42:25.305 [main] INFO  com.alibaba.druid.pool.DruidDataSource -
+				{dataSource-1} closed
+2018-02-01 12:42:25.311 [main] INFO  org.apache.catalina.core.StandardService -
+				Stopping service [Tomcat]
+2018-02-01 12:42:25.322 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer -
+				
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-02-01 12:42:25.421 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter -
+				
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field reactor in net.mimiduo.boot.web.action.EventSupportController required a bean of type 'reactor.core.Reactor' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'reactor.core.Reactor' in your configuration.
+

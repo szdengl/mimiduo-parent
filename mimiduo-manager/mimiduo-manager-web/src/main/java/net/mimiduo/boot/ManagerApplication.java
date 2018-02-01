@@ -1,21 +1,24 @@
 package net.mimiduo.boot;
 
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-
 import net.mimiduo.boot.common.util.Applications;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
-import org.springframework.context.annotation.ImportResource;
 
+/**
+ * ${DESCRIPTION}
+ *
+ * @author:LingDeng
+ * @create 2018-02-01 12:41
+ **/
 
 @SpringBootApplication
-public class ManageApplication extends SpringBootServletInitializer {
+public class ManagerApplication extends SpringBootServletInitializer {
 
 
     public static void main(String[] args){
-        SpringApplication springApplication=new SpringApplication(ManageApplication.class);
+        SpringApplication springApplication=new SpringApplication(ManagerApplication.class);
         Applications.supports(springApplication);
         springApplication.run(args);
     }
@@ -24,5 +27,4 @@ public class ManageApplication extends SpringBootServletInitializer {
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
         return super.configure(application);
     }
-
 }
