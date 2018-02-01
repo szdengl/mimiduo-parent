@@ -1,3 +1,6 @@
+package net.mimiduo.boot;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import net.mimiduo.boot.common.util.Applications;
 import org.springframework.boot.SpringApplication;

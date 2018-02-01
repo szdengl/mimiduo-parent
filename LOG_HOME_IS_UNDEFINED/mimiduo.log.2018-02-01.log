@@ -1,0 +1,332 @@
+2018-02-01 12:31:46.285 [main] INFO  ManageApplication -
+				Starting ManageApplication on DESKTOP-5U3F3G2 with PID 12520 (D:\work\intellij\mimiduo-parent\mimiduo-manager\mimiduo-manager-web\target\classes started by Administrator in D:\work\intellij\mimiduo-parent)
+2018-02-01 12:31:46.288 [main] INFO  ManageApplication -
+				The following profiles are active: dev
+2018-02-01 12:31:46.671 [background-preinit] INFO  org.hibernate.validator.internal.util.Version -
+				HV000001: Hibernate Validator 5.3.6.Final
+2018-02-01 12:31:46.695 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@30ee2816: startup date [Thu Feb 01 12:31:46 CST 2018]; root of context hierarchy
+2018-02-01 12:31:46.708 [main] WARN  o.s.b.c.ConfigurationWarningsApplicationContextInitializer -
+				
+
+** WARNING ** : Your ApplicationContext is unlikely to start due to a @ComponentScan of the default package.
+
+
+2018-02-01 12:31:58.313 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [ManageApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+2018-02-01 12:31:58.317 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer -
+				
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-02-01 12:31:58.324 [main] ERROR org.springframework.boot.SpringApplication -
+				Application startup failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [ManageApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:181)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:308)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:228)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:272)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:92)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:525)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at ManageApplication.main(ManageApplication.java:17)
+Caused by: java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:50)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:98)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:89)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:76)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:93)
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:693)
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getSuperClass(ConfigurationClassParser.java:857)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:328)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:245)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:190)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:292)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:245)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:198)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:167)
+	... 11 common frames omitted
+2018-02-01 12:33:15.935 [main] INFO  ManageApplication -
+				Starting ManageApplication on DESKTOP-5U3F3G2 with PID 12156 (D:\work\intellij\mimiduo-parent\mimiduo-manager\mimiduo-manager-web\target\classes started by Administrator in D:\work\intellij\mimiduo-parent)
+2018-02-01 12:33:15.938 [main] INFO  ManageApplication -
+				The following profiles are active: dev
+2018-02-01 12:33:16.106 [background-preinit] INFO  org.hibernate.validator.internal.util.Version -
+				HV000001: Hibernate Validator 5.3.6.Final
+2018-02-01 12:33:16.245 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@c267ef4: startup date [Thu Feb 01 12:33:16 CST 2018]; root of context hierarchy
+2018-02-01 12:33:16.255 [main] WARN  o.s.b.c.ConfigurationWarningsApplicationContextInitializer -
+				
+
+** WARNING ** : Your ApplicationContext is unlikely to start due to a @ComponentScan of the default package.
+
+
+2018-02-01 12:33:26.183 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [ManageApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+2018-02-01 12:33:26.199 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer -
+				
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-02-01 12:33:26.199 [main] ERROR org.springframework.boot.SpringApplication -
+				Application startup failed
+org.springframework.beans.factory.BeanDefinitionStoreException: Failed to parse configuration class [ManageApplication]; nested exception is java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:181)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:308)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:228)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:272)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:92)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:687)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:525)
+	at org.springframework.boot.context.embedded.EmbeddedWebApplicationContext.refresh(EmbeddedWebApplicationContext.java:122)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:693)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:360)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:303)
+	at ManageApplication.main(ManageApplication.java:17)
+Caused by: java.io.FileNotFoundException: class path resource [org/springframework/social/config/annotation/SocialConfigurerAdapter.class] cannot be opened because it does not exist
+	at org.springframework.core.io.ClassPathResource.getInputStream(ClassPathResource.java:172)
+	at org.springframework.core.type.classreading.SimpleMetadataReader.<init>(SimpleMetadataReader.java:50)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:98)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.createMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:89)
+	at org.springframework.boot.type.classreading.ConcurrentReferenceCachingMetadataReaderFactory.getMetadataReader(ConcurrentReferenceCachingMetadataReaderFactory.java:76)
+	at org.springframework.core.type.classreading.SimpleMetadataReaderFactory.getMetadataReader(SimpleMetadataReaderFactory.java:93)
+	at org.springframework.context.annotation.ConfigurationClassParser.asSourceClass(ConfigurationClassParser.java:693)
+	at org.springframework.context.annotation.ConfigurationClassParser$SourceClass.getSuperClass(ConfigurationClassParser.java:857)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:328)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:245)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:190)
+	at org.springframework.context.annotation.ConfigurationClassParser.doProcessConfigurationClass(ConfigurationClassParser.java:292)
+	at org.springframework.context.annotation.ConfigurationClassParser.processConfigurationClass(ConfigurationClassParser.java:245)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:198)
+	at org.springframework.context.annotation.ConfigurationClassParser.parse(ConfigurationClassParser.java:167)
+	... 11 common frames omitted
+2018-02-01 12:34:28.578 [main] INFO  net.mimiduo.boot.ManageApplication -
+				Starting ManageApplication on DESKTOP-5U3F3G2 with PID 16676 (D:\work\intellij\mimiduo-parent\mimiduo-manager\mimiduo-manager-web\target\classes started by Administrator in D:\work\intellij\mimiduo-parent)
+2018-02-01 12:34:28.580 [main] DEBUG net.mimiduo.boot.ManageApplication -
+				Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2018-02-01 12:34:28.581 [main] INFO  net.mimiduo.boot.ManageApplication -
+				The following profiles are active: dev
+2018-02-01 12:34:28.785 [background-preinit] INFO  org.hibernate.validator.internal.util.Version -
+				HV000001: Hibernate Validator 5.3.6.Final
+2018-02-01 12:34:28.804 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@c267ef4: startup date [Thu Feb 01 12:34:28 CST 2018]; root of context hierarchy
+2018-02-01 12:34:29.709 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -
+				Bean 'shiroConfiguration.DefaultShiroConfiguration' of type [net.mimiduo.boot.configuration.ShiroConfiguration$DefaultShiroConfiguration$$EnhancerBySpringCGLIB$$c14575a6] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-02-01 12:34:30.178 [main] INFO  o.s.b.c.e.tomcat.TomcatEmbeddedServletContainer -
+				Tomcat initialized with port(s): 8083 (http)
+2018-02-01 12:34:30.178 [main] INFO  org.apache.catalina.core.StandardService -
+				Starting service [Tomcat]
+2018-02-01 12:34:30.178 [main] INFO  org.apache.catalina.core.StandardEngine -
+				Starting Servlet Engine: Apache Tomcat/8.5.23
+2018-02-01 12:34:30.257 [localhost-startStop-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] -
+				Initializing Spring embedded WebApplicationContext
+2018-02-01 12:34:30.257 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader -
+				Root WebApplicationContext: initialization completed in 1453 ms
+2018-02-01 12:34:30.310 [localhost-startStop-1] INFO  net.mimiduo.boot.configuration.WebappConfiguration -
+				multipart.max-file-size: 10MB, multipart.max-file-size: 10MB
+2018-02-01 12:34:32.297 [localhost-startStop-1] INFO  com.alibaba.druid.pool.DruidDataSource -
+				{dataSource-1} inited
+2018-02-01 12:34:32.380 [localhost-startStop-1] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean -
+				Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-02-01 12:34:32.380 [localhost-startStop-1] INFO  org.hibernate.jpa.internal.util.LogHelper -
+				HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-02-01 12:34:32.428 [localhost-startStop-1] INFO  org.hibernate.Version -
+				HHH000412: Hibernate Core {5.0.12.Final}
+2018-02-01 12:34:32.443 [localhost-startStop-1] INFO  org.hibernate.cfg.Environment -
+				HHH000206: hibernate.properties not found
+2018-02-01 12:34:32.443 [localhost-startStop-1] INFO  org.hibernate.cfg.Environment -
+				HHH000021: Bytecode provider name : javassist
+2018-02-01 12:34:32.480 [localhost-startStop-1] INFO  org.hibernate.annotations.common.Version -
+				HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-02-01 12:34:32.580 [localhost-startStop-1] INFO  org.hibernate.dialect.Dialect -
+				HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-02-01 12:34:33.229 [localhost-startStop-1] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean -
+				Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-02-01 12:34:33.746 [localhost-startStop-1] INFO  o.h.hql.internal.QueryTranslatorFactoryInitiator -
+				HHH000397: Using ASTQueryTranslatorFactory
+2018-02-01 12:34:34.033 [localhost-startStop-1] INFO  org.apache.shiro.realm.AuthorizingRealm -
+				No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2018-02-01 12:34:34.033 [localhost-startStop-1] INFO  net.mimiduo.boot.service.impl.admin.ShiroDbRealm -
+				initCredentialsMatcher
+2018-02-01 12:34:34.084 [localhost-startStop-1] INFO  org.apache.shiro.cache.ehcache.EhCacheManager -
+				Cache with name 'net.mimiduo.boot.service.impl.admin.ShiroDbRealm.authorizationCache' does not yet exist.  Creating now.
+2018-02-01 12:34:34.100 [localhost-startStop-1] INFO  org.apache.shiro.cache.ehcache.EhCacheManager -
+				Added EhCache named [net.mimiduo.boot.service.impl.admin.ShiroDbRealm.authorizationCache]
+2018-02-01 12:34:34.131 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				load classpath:/conf/acl.properties
+2018-02-01 12:34:34.131 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/admin/**=roles[管理员]
+2018-02-01 12:34:34.131 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/appUpload/**=anon
+2018-02-01 12:34:34.131 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/introduce/**=anon
+2018-02-01 12:34:34.131 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/sms/**=anon
+2018-02-01 12:34:34.131 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/app/**=anon
+2018-02-01 12:34:34.131 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/api/**=anon
+2018-02-01 12:34:34.131 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/api/**=anon
+2018-02-01 12:34:34.199 [localhost-startStop-1] INFO  o.s.boot.web.servlet.ServletRegistrationBean -
+				Mapping servlet: 'statViewServlet' to [/druid/*]
+2018-02-01 12:34:34.199 [localhost-startStop-1] INFO  o.s.boot.web.servlet.ServletRegistrationBean -
+				Mapping servlet: 'dispatcherServlet' to [/]
+2018-02-01 12:34:34.199 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-02-01 12:34:34.199 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-02-01 12:34:34.199 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-02-01 12:34:34.199 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'requestContextFilter' to: [/*]
+2018-02-01 12:34:34.199 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'webStatFilter' to: [/*]
+2018-02-01 12:34:34.199 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'shiroFilter' to: [/*]
+2018-02-01 12:34:34.246 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'accountController': Unsatisfied dependency expressed through field 'reactor'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'reactor.core.Reactor' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-02-01 12:34:34.246 [main] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean -
+				Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-02-01 12:34:34.246 [main] INFO  com.alibaba.druid.pool.DruidDataSource -
+				{dataSource-1} closed
+2018-02-01 12:34:34.262 [main] INFO  org.apache.catalina.core.StandardService -
+				Stopping service [Tomcat]
+2018-02-01 12:34:34.262 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer -
+				
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-02-01 12:34:34.331 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter -
+				
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field reactor in net.mimiduo.boot.web.action.EventSupportController required a bean of type 'reactor.core.Reactor' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'reactor.core.Reactor' in your configuration.
+
+2018-02-01 12:37:09.307 [main] INFO  net.mimiduo.boot.ManageApplication -
+				Starting ManageApplication on DESKTOP-5U3F3G2 with PID 13588 (D:\work\intellij\mimiduo-parent\mimiduo-manager\mimiduo-manager-web\target\classes started by Administrator in D:\work\intellij\mimiduo-parent)
+2018-02-01 12:37:09.344 [main] DEBUG net.mimiduo.boot.ManageApplication -
+				Running with Spring Boot v1.5.9.RELEASE, Spring v4.3.13.RELEASE
+2018-02-01 12:37:09.344 [main] INFO  net.mimiduo.boot.ManageApplication -
+				The following profiles are active: dev
+2018-02-01 12:37:09.666 [main] INFO  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Refreshing org.springframework.boot.context.embedded.AnnotationConfigEmbeddedWebApplicationContext@60d8c9b7: startup date [Thu Feb 01 12:37:09 CST 2018]; root of context hierarchy
+2018-02-01 12:37:10.161 [background-preinit] INFO  org.hibernate.validator.internal.util.Version -
+				HV000001: Hibernate Validator 5.3.6.Final
+2018-02-01 12:37:11.540 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker -
+				Bean 'shiroConfiguration.DefaultShiroConfiguration' of type [net.mimiduo.boot.configuration.ShiroConfiguration$DefaultShiroConfiguration$$EnhancerBySpringCGLIB$$df97aa7c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2018-02-01 12:37:12.277 [main] INFO  o.s.b.c.e.tomcat.TomcatEmbeddedServletContainer -
+				Tomcat initialized with port(s): 8083 (http)
+2018-02-01 12:37:12.277 [main] INFO  org.apache.catalina.core.StandardService -
+				Starting service [Tomcat]
+2018-02-01 12:37:12.277 [main] INFO  org.apache.catalina.core.StandardEngine -
+				Starting Servlet Engine: Apache Tomcat/8.5.23
+2018-02-01 12:37:12.377 [localhost-startStop-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] -
+				Initializing Spring embedded WebApplicationContext
+2018-02-01 12:37:12.377 [localhost-startStop-1] INFO  org.springframework.web.context.ContextLoader -
+				Root WebApplicationContext: initialization completed in 2711 ms
+2018-02-01 12:37:12.462 [localhost-startStop-1] INFO  net.mimiduo.boot.configuration.WebappConfiguration -
+				multipart.max-file-size: 10MB, multipart.max-file-size: 10MB
+2018-02-01 12:37:14.295 [localhost-startStop-1] INFO  com.alibaba.druid.pool.DruidDataSource -
+				{dataSource-1} inited
+2018-02-01 12:37:14.380 [localhost-startStop-1] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean -
+				Building JPA container EntityManagerFactory for persistence unit 'default'
+2018-02-01 12:37:14.395 [localhost-startStop-1] INFO  org.hibernate.jpa.internal.util.LogHelper -
+				HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2018-02-01 12:37:14.480 [localhost-startStop-1] INFO  org.hibernate.Version -
+				HHH000412: Hibernate Core {5.0.12.Final}
+2018-02-01 12:37:14.480 [localhost-startStop-1] INFO  org.hibernate.cfg.Environment -
+				HHH000206: hibernate.properties not found
+2018-02-01 12:37:14.480 [localhost-startStop-1] INFO  org.hibernate.cfg.Environment -
+				HHH000021: Bytecode provider name : javassist
+2018-02-01 12:37:14.555 [localhost-startStop-1] INFO  org.hibernate.annotations.common.Version -
+				HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+2018-02-01 12:37:14.735 [localhost-startStop-1] INFO  org.hibernate.dialect.Dialect -
+				HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2018-02-01 12:37:15.568 [localhost-startStop-1] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean -
+				Initialized JPA EntityManagerFactory for persistence unit 'default'
+2018-02-01 12:37:16.199 [localhost-startStop-1] INFO  o.h.hql.internal.QueryTranslatorFactoryInitiator -
+				HHH000397: Using ASTQueryTranslatorFactory
+2018-02-01 12:37:16.558 [localhost-startStop-1] INFO  org.apache.shiro.realm.AuthorizingRealm -
+				No cache or cacheManager properties have been set.  Authorization cache cannot be obtained.
+2018-02-01 12:37:16.558 [localhost-startStop-1] INFO  net.mimiduo.boot.service.impl.admin.ShiroDbRealm -
+				initCredentialsMatcher
+2018-02-01 12:37:16.656 [localhost-startStop-1] INFO  org.apache.shiro.cache.ehcache.EhCacheManager -
+				Cache with name 'net.mimiduo.boot.service.impl.admin.ShiroDbRealm.authorizationCache' does not yet exist.  Creating now.
+2018-02-01 12:37:16.838 [localhost-startStop-1] INFO  org.apache.shiro.cache.ehcache.EhCacheManager -
+				Added EhCache named [net.mimiduo.boot.service.impl.admin.ShiroDbRealm.authorizationCache]
+2018-02-01 12:37:16.870 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				load classpath:/conf/acl.properties
+2018-02-01 12:37:16.895 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/admin/**=roles[管理员]
+2018-02-01 12:37:16.896 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/appUpload/**=anon
+2018-02-01 12:37:16.896 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/introduce/**=anon
+2018-02-01 12:37:16.896 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/sms/**=anon
+2018-02-01 12:37:16.896 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/app/**=anon
+2018-02-01 12:37:16.896 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/api/**=anon
+2018-02-01 12:37:16.896 [localhost-startStop-1] INFO  n.m.boot.configuration.ShiroConfiguration$Filters -
+				/api/**=anon
+2018-02-01 12:37:16.978 [localhost-startStop-1] INFO  o.s.boot.web.servlet.ServletRegistrationBean -
+				Mapping servlet: 'statViewServlet' to [/druid/*]
+2018-02-01 12:37:16.979 [localhost-startStop-1] INFO  o.s.boot.web.servlet.ServletRegistrationBean -
+				Mapping servlet: 'dispatcherServlet' to [/]
+2018-02-01 12:37:16.983 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'characterEncodingFilter' to: [/*]
+2018-02-01 12:37:16.984 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'hiddenHttpMethodFilter' to: [/*]
+2018-02-01 12:37:16.984 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'httpPutFormContentFilter' to: [/*]
+2018-02-01 12:37:16.984 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'requestContextFilter' to: [/*]
+2018-02-01 12:37:16.984 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'webStatFilter' to: [/*]
+2018-02-01 12:37:16.984 [localhost-startStop-1] INFO  o.s.boot.web.servlet.FilterRegistrationBean -
+				Mapping filter: 'shiroFilter' to: [/*]
+2018-02-01 12:37:17.061 [main] WARN  o.s.b.c.e.AnnotationConfigEmbeddedWebApplicationContext -
+				Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'accountController': Unsatisfied dependency expressed through field 'reactor'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'reactor.core.Reactor' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-02-01 12:37:17.066 [main] INFO  o.s.orm.jpa.LocalContainerEntityManagerFactoryBean -
+				Closing JPA EntityManagerFactory for persistence unit 'default'
+2018-02-01 12:37:17.072 [main] INFO  com.alibaba.druid.pool.DruidDataSource -
+				{dataSource-1} closed
+2018-02-01 12:37:17.077 [main] INFO  org.apache.catalina.core.StandardService -
+				Stopping service [Tomcat]
+2018-02-01 12:37:17.086 [main] INFO  o.s.b.a.l.AutoConfigurationReportLoggingInitializer -
+				
+
+Error starting ApplicationContext. To display the auto-configuration report re-run your application with 'debug' enabled.
+2018-02-01 12:37:17.178 [main] ERROR o.s.b.diagnostics.LoggingFailureAnalysisReporter -
+				
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field reactor in net.mimiduo.boot.web.action.EventSupportController required a bean of type 'reactor.core.Reactor' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'reactor.core.Reactor' in your configuration.
+
