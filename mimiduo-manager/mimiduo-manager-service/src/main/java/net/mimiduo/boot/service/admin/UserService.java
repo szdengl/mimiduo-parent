@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.concurrent.Future;
 
 
+import net.mimiduo.boot.pojo.SessionUser;
 import net.mimiduo.boot.pojo.admin.Organization;
 import net.mimiduo.boot.pojo.admin.Privilege;
 import net.mimiduo.boot.pojo.admin.Role;

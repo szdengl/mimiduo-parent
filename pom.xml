@@ -28,6 +28,7 @@
         <commons-codec.version>1.10</commons-codec.version>
         <javax-validation.version>1.1.0.Final</javax-validation.version>
         <guava.version>23.6-jre</guava.version>
+        <jackson.module>2.9.3</jackson.module>
         <jackson.mapper>2.3.0-rc1</jackson.mapper>
         <fastjson.version>1.2.41</fastjson.version>
         <drudi.version>1.1.5</drudi.version>
@@ -37,6 +38,7 @@
         <reactor-core.version>1.1.5.RELEASE</reactor-core.version>
         <reactor-spring.version>1.1.3.RELEASE</reactor-spring.version>
         <conf.dozer.version>5.5.1</conf.dozer.version>
+
     </properties>
     <dependencyManagement>
         <dependencies>
@@ -74,6 +76,11 @@
                 <version>${guava.version}</version>
             </dependency>
             <!--json组件-->
+            <dependency>
+                <groupId>com.fasterxml.jackson.module</groupId>
+                <artifactId>jackson-module-jaxb-annotations</artifactId>
+                <version>${jackson.module}</version>
+            </dependency>
             <dependency>
                 <groupId>com.fasterxml.jackson.datatype</groupId>
                 <artifactId>jackson-datatype-joda</artifactId>
@@ -128,6 +135,11 @@
             <dependency>
                 <groupId>net.sf.dozer</groupId>
                 <artifactId>dozer</artifactId>
+                <version>${conf.dozer.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>net.sf.dozer</groupId>
+                <artifactId>dozer-spring</artifactId>
                 <version>${conf.dozer.version}</version>
             </dependency>
         </dependencies>

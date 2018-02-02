@@ -15,9 +15,9 @@ import javax.persistence.criteria.Root;
 
 import net.mimiduo.boot.dao.BaseDao;
 import net.mimiduo.boot.dao.admin.*;
+import net.mimiduo.boot.pojo.SessionUser;
 import net.mimiduo.boot.pojo.admin.*;
 import net.mimiduo.boot.service.admin.OrganizationService;
-import net.mimiduo.boot.service.admin.SessionUser;
 import net.mimiduo.boot.service.admin.UserService;
 import net.mimiduo.boot.service.impl.BaseServiceImpl;
 import org.apache.commons.lang3.StringUtils;
